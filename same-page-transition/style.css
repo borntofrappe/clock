@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  display: grid;
+  place-items: center;
+  min-height: 100svb;
+}
+
+main {
+  inline-size: 100%;
+  max-inline-size: 60ch;
+  margin-inline: auto;
+}
+
+button {
+  --size: 3rem;
+  inline-size: var(--size);
+  block-size: var(--size);
+}
