@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: hsl(0 0% 10%);
+  background: hsl(0 0% 96%);
+  font-family: system-ui;
+  display: grid;
+  place-items: center;
+  min-height: 100svb;
+}
+
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+main > button {
+  align-self: end;
+  inline-size: 2rem;
+  block-size: 2rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: hsl(0 0% 11%);
+  background: none;
+  border: none;
+}
+
+main > button:hover,
+main > button:focus {
+  background: hsl(0 0% 88%);
+}
+
+main > button:focus {
+  outline-offset: 2px;
+  outline-color: currentColor;
+}
+
+main > button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+main > button > svg {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+h1 {
+  color: hsl(0 0% 37%);
+  line-height: 1;
+  font-size: 1.5rem;
+  font-weight: 400;
+  display: grid;
+  justify-items: center;
+  align-items: baseline;
+  grid-template-columns: repeat(4, auto);
+}
+
+h1 > span:nth-child(-n + 3) {
+  position: relative;
+}
+
+h1 > span:nth-child(-n + 3)::after {
+  content: ":";
+  position: absolute;
+  inset-inline-start: 100%;
+  translate: -50% 0;
+}
+
+h1 > span:nth-child(3)::after {
+  content: ".";
+}
+
+h1 > span:nth-child(-n + 4) {
+  padding-inline: 0.15em;
+}
+
+h1 > span {
+  font-size: 4em;
+}
+
+h1 > span:nth-child(4) {
+  font-size: 3em;
+  justify-self: start;
+}
+
+h1 > span:nth-child(n + 5) {
+  font-size: 1em;
+}
+
+main > div {
+  padding: 2rem 1rem;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+div > button {
+  inline-size: 3.8rem;
+  block-size: 3.8rem;
+  padding: 1.2rem;
+  border-radius: 0.5rem;
+  color: hsl(0 0% 11%);
+  background: hsl(0 0% 100%);
+  border: none;
+  box-shadow: 0 0 0.15rem -0.05rem currentColor, 0 0 0.5rem -0.4rem currentColor;
+  border-radius: 1e5px;
+}
+
+div > button:hover,
+div > button:focus {
+  background: hsl(0 0% 88%);
+}
+
+div > button:focus {
+  outline-offset: 2px;
+  outline-color: currentColor;
+}
+
+div > button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+div > button:nth-child(1) {
+  color: hsl(0 0% 100%);
+  background: hsl(182 95% 24%);
+}
+
+div > button:nth-child(1):hover,
+div > button:nth-child(1):focus {
+  background: hsl(182 90% 30%);
+}
+
+div > button > svg {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}

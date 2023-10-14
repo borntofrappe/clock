@@ -1,0 +1,19 @@
+<svg style="display: block;" viewBox="-8.626273155212402 -17.204219818115234 77.55683135986328 24.17074966430664">
+	<g fill="currentColor" font-family="system-ui">
+		<text text-anchor="middle">
+				<tspan font-size="16">00</tspan><tspan font-size="4" x="0" y="6">hr</tspan>
+		</text>
+		<text x="9.25">:</text>
+		<text transform="translate(22 0)" text-anchor="middle" >
+				<tspan font-size="16">14</tspan><tspan font-size="4" x="0" y="6">min</tspan>
+		</text>
+		<text x="31.25">:</text>
+		<text transform="translate(44 0)" text-anchor="middle" >
+				<tspan font-size="16">25</tspan><tspan font-size="4" x="0" y="6">sec</tspan>
+		</text>
+		<text x="53.25">.</text>
+		<text transform="translate(63 0)" text-anchor="middle" font-size="11">
+			95
+		</text>
+	</g>
+</svg>
