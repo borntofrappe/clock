@@ -7,15 +7,9 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main>
-      <button>
-        <span class="visually-hidden">Expand</span>
-        <svg
-          aria-hidden="true"
-          width="1em"
-          height="1em"
-          viewBox="-10 -10 20 20"
-        >
+    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0">
+      <defs>
+        <symbol id="icon-expand" viewBox="-10 -10 20 20">
           <path
             fill="none"
             stroke="currentColor"
@@ -23,6 +17,43 @@
             stroke-linejoin="round"
             d="M 9.5 -9.5 3 -9.5 9 -9 9.5 -3 Z M 9.5 -9.5 -9.5 9.5 M -9.5 9.5 -3 9.5 -9 9 -9.5 3 Z"
           />
+        </symbol>
+        <symbol id="icon-restore" viewBox="-10 -10 20 20">
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M 9.5 -9.5 2 -2 2 -8 2.5 -2.5 8 -2 2 -2 M -9.5 9.5 -2 2 -8 2 -2.5 2.5 -2 8 -2 2"
+          />
+        </symbol>
+        <symbol id="icon-start" viewBox="-10 -10 20 20">
+          <path
+            fill="currentColor"
+            stroke="currentColor"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M -6.5 -8 7 0 -6.5 8 Z"
+          />
+        </symbol>
+        <symbol id="icon-reset" viewBox="-10 -10 20 20">
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M -6 -9.5 -9.5 -6 -6 -2.5 -9 -6 Z M -9.5 -6 L 2.5 -6 A 7 7 0 0 1 9.5 1 8.5 8.5 0 0 1 -7.5 1"
+          />
+        </symbol>
+      </defs>
+    </svg>
+
+    <main>
+      <button>
+        <span class="visually-hidden">Expand</span>
+        <svg aria-hidden="true" width="1em" height="1em" viewBox="0 0 1 1">
+          <use href="#icon-expand" />
         </svg>
       </button>
       <h1>
@@ -37,40 +68,18 @@
       <div>
         <button>
           <span class="visually-hidden">Start</span>
-          <svg
-            aria-hidden="true"
-            width="1em"
-            height="1em"
-            viewBox="-10 -10 20 20"
-          >
-            <path
-              fill="currentColor"
-              stroke="currentColor"
-              stroke-width="4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M -6.5 -8 7 0 -6.5 8 Z"
-            />
+          <svg aria-hidden="true" width="1em" height="1em" viewBox="0 0 1 1">
+            <use href="#icon-start" />
           </svg>
         </button>
         <button>
           <span class="visually-hidden">Reset</span>
-          <svg
-            aria-hidden="true"
-            width="1em"
-            height="1em"
-            viewBox="-10 -10 20 20"
-          >
-            <path
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M -6 -9.5 -9.5 -6 -6 -2.5 -9 -6 Z M -9.5 -6 L 2.5 -6 A 7 7 0 0 1 9.5 1 8.5 8.5 0 0 1 -7.5 1"
-            />
+          <svg aria-hidden="true" width="1em" height="1em" viewBox="0 0 1 1">
+            <use href="#icon-reset" />
           </svg>
         </button>
       </div>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>

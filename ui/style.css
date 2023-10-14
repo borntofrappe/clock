@@ -59,6 +59,10 @@ main > button > svg {
   block-size: 100%;
 }
 
+main > button {
+  view-transition-name: toggle-size;
+}
+
 h1 {
   color: hsl(0 0% 37%);
   line-height: 1;
@@ -68,6 +72,14 @@ h1 {
   justify-items: center;
   align-items: baseline;
   grid-template-columns: repeat(4, auto);
+}
+
+h1 {
+  view-transition-name: time;
+}
+
+h1.expand {
+  font-size: 2rem;
 }
 
 h1 > span:nth-child(-n + 3) {
@@ -110,6 +122,14 @@ div {
   display: flex;
   justify-content: center;
   gap: 2rem;
+}
+
+div > button:nth-child(1) {
+  view-transition-name: toggle-stopwatch;
+}
+
+div > button:nth-child(2) {
+  view-transition-name: reset;
 }
 
 div > button {
