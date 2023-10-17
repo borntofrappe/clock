@@ -1,12 +1,26 @@
 <script>
 	import icons from './icons';
+
+	let expand = false;
+
+	const toggleExpand = () => {
+		// @ts-ignore
+		if (document.startViewTransition) {
+			// @ts-ignore
+			document.startViewTransition(async () => {
+				expand = !expand;
+			});
+		} else {
+			expand = !expand;
+		}
+	};
 </script>
 
 <div class="center">
-	<main>
-		<button aria-pressed="false">
+	<main class:expand>
+		<button on:click={toggleExpand} aria-pressed={expand}>
 			<span class="visually-hidden">Expand</span>
-			{@html icons['expand']}
+			{@html expand ? icons['restore'] : icons['expand']}
 		</button>
 
 		<!-- prettier-ignore -->
@@ -125,5 +139,30 @@
 		display: block;
 		inline-size: 100%;
 		block-size: 100%;
+	}
+
+	main.expand {
+		inline-size: 100%;
+		max-inline-size: 80ch;
+	}
+
+	main.expand .controls button {
+		font-size: 3.8rem;
+	}
+
+	main > button {
+		view-transition-name: toggle-size;
+	}
+
+	main svg[role='heading'] {
+		view-transition-name: heading;
+	}
+
+	main .controls button:nth-child(1) {
+		view-transition-name: toggle-start;
+	}
+
+	main .controls button:nth-child(2) {
+		view-transition-name: reset;
 	}
 </style>
