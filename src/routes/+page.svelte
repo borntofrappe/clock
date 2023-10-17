@@ -2,14 +2,15 @@
 	import icons from './icons';
 </script>
 
-<main>
-	<button aria-pressed="false">
-		<span class="visually-hidden">Expand</span>
-		{@html icons['expand']}
-	</button>
+<div class="center">
+	<main>
+		<button aria-pressed="false">
+			<span class="visually-hidden">Expand</span>
+			{@html icons['expand']}
+		</button>
 
-	<!-- prettier-ignore -->
-	<svg aria-level={1} role="heading" viewBox="-9.04542 -11.79565 85.964 17.841">
+		<!-- prettier-ignore -->
+		<svg aria-level={1} role="heading" viewBox="-9.04542 -11.79565 85.964 17.841">
         <g fill="currentColor" font-family="'Inter', system-ui, sans-serif">
             <text text-anchor="middle"><tspan font-size="16">00</tspan><tspan x="0" y="6" font-size="4">hr</tspan></text>
             <text x="10.049788" font-size="16">:</text>
@@ -21,17 +22,108 @@
         </g>
       </svg>
 
-	<div>
-		<button>
-			<span class="visually-hidden">Start</span>
-			{@html icons['start']}
-		</button>
-		<button>
-			<span class="visually-hidden">Reset</span>
-			{@html icons['reset']}
-		</button>
-	</div>
-</main>
+		<div class="controls">
+			<button>
+				<span class="visually-hidden">Start</span>
+				{@html icons['start']}
+			</button>
+			<button>
+				<span class="visually-hidden">Reset</span>
+				{@html icons['reset']}
+			</button>
+		</div>
+	</main>
+</div>
 
 <style>
+	.center {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		min-height: 100svb;
+	}
+
+	main {
+		max-inline-size: 60ch;
+		inline-size: 90%;
+		padding: 1rem;
+	}
+
+	main > button {
+		display: block;
+		margin-inline-start: auto;
+	}
+
+	main > svg[role='heading'] {
+		display: block;
+		inline-size: 100%;
+	}
+
+	main > div {
+		margin-block-start: 1.5rem;
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+	}
+
+	main > button {
+		inline-size: 2rem;
+		block-size: 2rem;
+		padding: 0.5rem;
+		border-radius: 0.5rem;
+		color: hsl(0 0% 11%);
+		background: none;
+		border: none;
+	}
+
+	main > button:hover {
+		background: hsl(0 0% 88%);
+	}
+
+	main > button:focus {
+		outline-offset: 2px;
+		outline-color: currentColor;
+	}
+
+	.controls button {
+		font-size: 3.2rem;
+		inline-size: 1em;
+		block-size: 1em;
+		padding: 0.3em;
+		border-radius: 0.5rem;
+		color: hsl(0 0% 11%);
+		background: hsl(0 0% 100%);
+		border: none;
+		box-shadow: 0 0 0.15rem -0.05rem currentColor, 0 0 0.5rem -0.4rem currentColor;
+		border-radius: 1e5px;
+	}
+
+	.controls button:hover {
+		background: hsl(0 0% 88%);
+	}
+
+	.controls button:focus {
+		outline-offset: 2px;
+		outline-color: currentColor;
+	}
+
+	.controls > button:nth-child(1) {
+		color: hsl(0 0% 100%);
+		background: hsl(182 95% 24%);
+	}
+
+	.controls > button:nth-child(1):hover {
+		background: hsl(182 90% 30%);
+	}
+
+	.controls > button:nth-child(1):focus {
+		outline-color: hsl(182 90% 30%);
+	}
+
+	.controls button > :global(svg) {
+		display: block;
+		inline-size: 100%;
+		block-size: 100%;
+	}
 </style>
