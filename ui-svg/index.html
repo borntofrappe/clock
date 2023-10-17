@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stopwatch</title>
+    <link
+      rel="preload"
+      href="Inter-Regular-Subset.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <style>
+      @font-face {
+        font-family: Inter;
+        src: url("Inter-Regular-Subset.woff2") format("woff2");
+        font-display: swap;
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0">
+      <defs>
+        <symbol id="icon-expand" viewBox="-10 -10 20 20">
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M 9.5 -9.5 3 -9.5 9 -9 9.5 -3 Z M 9.5 -9.5 -9.5 9.5 M -9.5 9.5 -3 9.5 -9 9 -9.5 3 Z"
+          />
+        </symbol>
+        <symbol id="icon-restore" viewBox="-10 -10 20 20">
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M 9.5 -9.5 2 -2 2 -8 2.5 -2.5 8 -2 2 -2 M -9.5 9.5 -2 2 -8 2 -2.5 2.5 -2 8 -2 2"
+          />
+        </symbol>
+        <symbol id="icon-start" viewBox="-10 -10 20 20">
+          <path
+            fill="currentColor"
+            stroke="currentColor"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M -6.5 -8 7 0 -6.5 8 Z"
+          />
+        </symbol>
+        <symbol id="icon-reset" viewBox="-10 -10 20 20">
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M -6 -9.5 -9.5 -6 -6 -2.5 -9 -6 Z M -9.5 -6 L 2.5 -6 A 7 7 0 0 1 9.5 1 8.5 8.5 0 0 1 -7.5 1"
+          />
+        </symbol>
+      </defs>
+    </svg>
+
+    <main>
+      <button aria-pressed="false">
+        <span class="visually-hidden">Expand</span>
+        <svg aria-hidden="true" width="1em" height="1em" viewBox="0 0 1 1">
+          <use href="#icon-expand" />
+        </svg>
+      </button>
+      <!-- prettier-ignore -->
+      <svg role="heading" viewBox="-9.04542 -11.79565 85.964 17.841">
+        <g fill="currentColor" font-family="'Inter', system-ui, sans-serif">
+            <text text-anchor="middle"><tspan font-size="16">00</tspan><tspan x="0" y="6" font-size="4">hr</tspan></text>
+            <text x="10.049788" font-size="16">:</text>
+            <text x="24.508667" text-anchor="middle"><tspan font-size="16">00</tspan><tspan x="24.508667" y="6" font-size="4">min</tspan></text>
+            <text x="34.558453" font-size="16">:</text>
+            <text x="49.017334" text-anchor="middle"><tspan font-size="16">00</tspan><tspan x="49.017334" y="6" font-size="4">sec</tspan></text>
+            <text x="59.06712" font-size="16">.</text>
+            <text x="70.699295" font-size="11" text-anchor="middle">00</text>
+        </g>
+      </svg>
+      <div>
+        <button>
+          <span class="visually-hidden">Start</span>
+          <svg aria-hidden="true" width="1em" height="1em" viewBox="0 0 1 1">
+            <use href="#icon-start" />
+          </svg>
+        </button>
+        <button>
+          <span class="visually-hidden">Reset</span>
+          <svg aria-hidden="true" width="1em" height="1em" viewBox="0 0 1 1">
+            <use href="#icon-reset" />
+          </svg>
+        </button>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
