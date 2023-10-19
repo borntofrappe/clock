@@ -1,7 +1,8 @@
 import { writable } from 'svelte/store';
 
 const createStopwatch = () => {
-	let running = false;
+	/** @type {('waiting'|'running')} */
+	let state = 'waiting';
 	/** @type null|NodeJS.Timer */
 	let interval = null;
 	let ms = 0;
@@ -14,21 +15,21 @@ const createStopwatch = () => {
 	});
 
 	const toggle = () => {
-		if (running) {
+		if (state === 'running') {
+			state = 'waiting';
 			lapsed += new Date().valueOf() - ms;
 			if (interval) clearInterval(interval);
 		} else {
+			state = 'running';
 			ms = new Date().valueOf();
 			interval = setInterval(() => {
 				set(lapsed + (new Date().valueOf() - ms));
 			});
 		}
-
-		running = !running;
 	};
 
 	const reset = () => {
-		if (running) toggle();
+		if (state === 'running') toggle();
 
 		lapsed = 0;
 		set(0);
