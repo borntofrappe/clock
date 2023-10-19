@@ -1,7 +1,6 @@
 <script>
 	import icons from './icons';
 	import { stopwatch, getTime } from '$lib';
-	import { onMount } from 'svelte';
 
 	let expand = false;
 
@@ -17,17 +16,9 @@
 		}
 	};
 
-	let [hours, minutes, seconds, hundredths] = new Array(4).fill('00');
-
-	onMount(() => {
-		const unsubscribe = stopwatch.subscribe((ms) => {
-			[hours, minutes, seconds, hundredths] = getTime(ms).map((d) => d.toString().padStart(2, '0'));
-		});
-
-		return () => {
-			unsubscribe();
-		};
-	});
+	$: [hours, minutes, seconds, hundredths] = getTime($stopwatch).map((d) =>
+		d.toString().padStart(2, '0')
+	);
 </script>
 
 <div class="center">
