@@ -1,7 +1,6 @@
 <script>
 	import icons from './icons';
-	import { stopwatch } from '$lib/stores';
-	import { getTime } from '$lib/utils';
+	import { stopwatch, getTime } from '$lib';
 	import { onMount } from 'svelte';
 
 	let expand = false;

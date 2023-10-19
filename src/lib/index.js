@@ -1,1 +1,2 @@
-// place files you want to import through the `$lib` alias in this folder.
+export { stopwatch } from './stores.js';
+export { getTime } from './utils.js';
