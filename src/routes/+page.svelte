@@ -36,7 +36,7 @@
 		</button>
 
 		<!-- prettier-ignore -->
-		<svg aria-level={1} role="heading" viewBox="-9.2273 -11.795 86.27 17.841">
+		<svg data-state="{state}" aria-level={1} role="heading" viewBox="-9.2273 -11.795 86.27 17.841">
 			<g fill="currentColor" font-family="Inter, system-ui, sans-serif" style="font-feature-settings:'tnum'">
 			   <text text-anchor="middle"><tspan font-size="16">{hours}</tspan><tspan x="0" y="6" font-size="4">hr</tspan></text>
 			   <text x="10.049788" font-size="16">:</text>
@@ -96,6 +96,11 @@
 	main > svg[role='heading'] {
 		display: block;
 		inline-size: 100%;
+		color: hsl(0 0% 37%);
+	}
+
+	main > svg[data-state='run'] {
+		color: hsl(0 0% 11%);
 	}
 
 	main > div {
