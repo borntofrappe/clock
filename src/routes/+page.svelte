@@ -60,7 +60,7 @@
 				{@html state === 'run' ? icons['pause'] : icons['start']}
 			</button>
 			<button
-				disabled={state === null}
+				disabled={state === null || $stopwatch === 0}
 				on:click={() => {
 					stopwatch.reset();
 					state = stopwatch.state === 'running' ? 'run' : 'wait';
@@ -115,8 +115,16 @@
 		border: none;
 	}
 
-	main > button:hover {
+	main > button:not(:disabled):hover {
 		background: hsl(0 0% 88%);
+	}
+
+	main > button:not(:disabled):active {
+		background: hsl(0 0% 92%);
+	}
+
+	main > button:disabled {
+		opacity: 0.6;
 	}
 
 	main > button:focus {
@@ -137,8 +145,17 @@
 		border-radius: 1e5px;
 	}
 
-	.controls button:hover {
+	.controls button:not(:disabled):hover {
 		background: hsl(0 0% 88%);
+	}
+
+	.controls button:not(:disabled):active {
+		background: hsl(0 0% 92%);
+	}
+
+	.controls button:disabled {
+		background: none;
+		opacity: 0.6;
 	}
 
 	.controls button:focus {
@@ -151,12 +168,17 @@
 		background: hsl(182 95% 24%);
 	}
 
-	.controls > button:nth-child(1):hover {
-		background: hsl(182 90% 30%);
+	.controls > button:nth-child(1):not(:disabled):hover {
+		background: hsl(182 66% 31%);
+	}
+
+	.controls > button:nth-child(1):not(:disabled):active {
+		color: hsl(182 30% 82%);
+		background: hsl(182 47% 38%);
 	}
 
 	.controls > button:nth-child(1):focus {
-		outline-color: hsl(182 90% 30%);
+		outline-color: hsl(182 95% 24%);
 	}
 
 	.controls button > :global(svg) {
