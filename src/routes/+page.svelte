@@ -141,7 +141,7 @@
 		font-size: 3.2rem;
 		inline-size: 1em;
 		block-size: 1em;
-		padding: 0.3em;
+		padding: 0.33em;
 		border-radius: 0.5rem;
 		color: hsl(0 0% 11%);
 		background: hsl(0 0% 100%);
