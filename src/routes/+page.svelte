@@ -1,8 +1,15 @@
 <script>
 	import icons from './icons';
 	import { stopwatch, getTime } from '$lib';
+	import { onMount } from 'svelte';
 
 	let expand = false;
+	/** @type {(null|'watch'|'run'|'wait')} */
+	let state = null;
+
+	onMount(() => {
+		state = 'watch';
+	});
 
 	const toggleExpand = () => {
 		// @ts-ignore
@@ -23,30 +30,42 @@
 
 <div class="center">
 	<main class:expand>
-		<button on:click={toggleExpand} aria-pressed={expand}>
+		<button disabled={state === null} on:click={toggleExpand} aria-pressed={expand}>
 			<span class="visually-hidden">Expand</span>
 			{@html expand ? icons['restore'] : icons['expand']}
 		</button>
 
 		<!-- prettier-ignore -->
 		<svg aria-level={1} role="heading" viewBox="-9.04542 -11.79565 85.964 17.841">
-        <g fill="currentColor" font-family="'Inter', system-ui, sans-serif">
-            <text text-anchor="middle"><tspan font-size="16">{hours}</tspan><tspan x="0" y="6" font-size="4">hr</tspan></text>
-            <text x="10.049788" font-size="16">:</text>
-            <text x="24.508667" text-anchor="middle"><tspan font-size="16">{minutes}</tspan><tspan x="24.508667" y="6" font-size="4">min</tspan></text>
-            <text x="34.558453" font-size="16">:</text>
-            <text x="49.017334" text-anchor="middle"><tspan font-size="16">{seconds}</tspan><tspan x="49.017334" y="6" font-size="4">sec</tspan></text>
-            <text x="59.06712" font-size="16">.</text>
-            <text x="70.699295" font-size="11" text-anchor="middle">{hundredths}</text>
-        </g>
-      </svg>
+			<g fill="currentColor" font-family="'Inter', system-ui, sans-serif">
+				<text text-anchor="middle"><tspan font-size="16">{hours}</tspan><tspan x="0" y="6" font-size="4">hr</tspan></text>
+				<text x="10.049788" font-size="16">:</text>
+				<text x="24.508667" text-anchor="middle"><tspan font-size="16">{minutes}</tspan><tspan x="24.508667" y="6" font-size="4">min</tspan></text>
+				<text x="34.558453" font-size="16">:</text>
+				<text x="49.017334" text-anchor="middle"><tspan font-size="16">{seconds}</tspan><tspan x="49.017334" y="6" font-size="4">sec</tspan></text>
+				<text x="59.06712" font-size="16">.</text>
+				<text x="70.699295" font-size="11" text-anchor="middle">{hundredths}</text>
+			</g>
+		</svg>
 
 		<div class="controls">
-			<button on:click={stopwatch.toggle}>
+			<button
+				disabled={state === null}
+				on:click={() => {
+					stopwatch.toggle();
+					state = stopwatch.state === 'running' ? 'run' : 'wait';
+				}}
+			>
 				<span class="visually-hidden">Start</span>
-				{@html icons['start']}
+				{@html state === 'run' ? icons['pause'] : icons['start']}
 			</button>
-			<button on:click={stopwatch.reset}>
+			<button
+				disabled={state === null}
+				on:click={() => {
+					stopwatch.reset();
+					state = stopwatch.state === 'running' ? 'run' : 'wait';
+				}}
+			>
 				<span class="visually-hidden">Reset</span>
 				{@html icons['reset']}
 			</button>

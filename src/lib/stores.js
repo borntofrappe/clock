@@ -36,6 +36,9 @@ const createStopwatch = () => {
 	};
 
 	return {
+		get state() {
+			return state;
+		},
 		subscribe,
 		toggle,
 		reset
