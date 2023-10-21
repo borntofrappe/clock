@@ -48,7 +48,8 @@
 			</button>
 			<button disabled={state === null} on:click={toggleTheme} aria-pressed={theme === 'dark'}>
 				<span class="visually-hidden">Set dark theme</span>
-				{@html theme === 'dark' ? icons['moon'] : icons['sun']}
+				{@html icons['sun']}
+				{@html icons['moon']}
 			</button>
 		</div>
 
@@ -132,7 +133,7 @@
 	.preferences button {
 		inline-size: 2.2rem;
 		block-size: 2.2rem;
-		padding: 0.5rem;
+		padding: 0.6rem;
 		border-radius: 0.5rem;
 		color: var(--button-color);
 		background: none;
@@ -154,6 +155,42 @@
 	.preferences button:focus {
 		outline-offset: 2px;
 		outline-color: currentColor;
+	}
+
+	.preferences button > :global(svg) {
+		display: block;
+		inline-size: 100%;
+		block-size: 100%;
+	}
+
+	.preferences > button:nth-child(2) > :global(svg:nth-of-type(2)) {
+		display: none;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:global([data-theme='dark']) .preferences > button:nth-child(2) > :global(svg:nth-of-type(1)) {
+			display: none;
+		}
+
+		:global([data-theme='dark']) .preferences > button:nth-child(2) > :global(svg:nth-of-type(2)) {
+			display: initial;
+		}
+	}
+
+	:global([data-theme='light']) .preferences > button:nth-child(2) > :global(svg:nth-of-type(1)) {
+		display: initial;
+	}
+
+	:global([data-theme='light']) .preferences > button:nth-child(2) > :global(svg:nth-of-type(2)) {
+		display: none;
+	}
+
+	:global([data-theme='dark']) .preferences > button:nth-child(2) > :global(svg:nth-of-type(1)) {
+		display: none;
+	}
+
+	:global([data-theme='dark']) .preferences > button:nth-child(2) > :global(svg:nth-of-type(2)) {
+		display: initial;
 	}
 
 	.controls button {
