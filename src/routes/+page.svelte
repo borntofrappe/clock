@@ -4,6 +4,8 @@
 	import { onMount } from 'svelte';
 
 	let expand = false;
+	/** @type {('light'|'dark')} */
+	let theme = 'light';
 	/** @type {(null|'watch'|'run'|'wait')} */
 	let state = null;
 
@@ -23,6 +25,10 @@
 		}
 	};
 
+	const toggleTheme = () => {
+		theme = theme === 'light' ? 'dark' : 'light';
+	};
+
 	$: [hours, minutes, seconds, hundredths] = getTime($stopwatch).map((d) =>
 		d.toString().padStart(2, '0')
 	);
@@ -30,10 +36,16 @@
 
 <div class="center">
 	<main class:expand>
-		<button disabled={state === null} on:click={toggleExpand} aria-pressed={expand}>
-			<span class="visually-hidden">Expand</span>
-			{@html expand ? icons['restore'] : icons['expand']}
-		</button>
+		<div class="preferences">
+			<button disabled={state === null} on:click={toggleExpand} aria-pressed={expand}>
+				<span class="visually-hidden">Expand</span>
+				{@html expand ? icons['restore'] : icons['expand']}
+			</button>
+			<button disabled={state === null} on:click={toggleTheme} aria-pressed={theme === 'dark'}>
+				<span class="visually-hidden">Set dark theme</span>
+				{@html theme === 'dark' ? icons['moon'] : icons['sun']}
+			</button>
+		</div>
 
 		<!-- prettier-ignore -->
 		<svg data-state="{state}" aria-level={1} role="heading" viewBox="-9.2273 -11.795 86.27 17.841">
@@ -89,9 +101,10 @@
 		padding: 1rem;
 	}
 
-	main > button {
-		display: block;
-		margin-inline-start: auto;
+	main > div.preferences {
+		display: flex;
+		justify-content: end;
+		gap: 0rem;
 	}
 
 	main > svg[role='heading'] {
@@ -104,16 +117,16 @@
 		color: var(--color);
 	}
 
-	main > div {
+	main > div.controls {
 		margin-block-start: 1.5rem;
 		display: flex;
 		justify-content: center;
 		gap: 2rem;
 	}
 
-	main > button {
-		inline-size: 2rem;
-		block-size: 2rem;
+	.preferences button {
+		inline-size: 2.2rem;
+		block-size: 2.2rem;
 		padding: 0.5rem;
 		border-radius: 0.5rem;
 		color: var(--button-color);
@@ -121,19 +134,19 @@
 		border: none;
 	}
 
-	main > button:not(:disabled):hover {
+	.preferences button:not(:disabled):hover {
 		background: var(--button-hover);
 	}
 
-	main > button:not(:disabled):active {
+	.preferences button:not(:disabled):active {
 		background: var(--button-active);
 	}
 
-	main > button:disabled {
+	.preferences button:disabled {
 		opacity: 0.6;
 	}
 
-	main > button:focus {
+	.preferences button:focus {
 		outline-offset: 2px;
 		outline-color: currentColor;
 	}
@@ -193,16 +206,7 @@
 		block-size: 100%;
 	}
 
-	main.expand {
-		inline-size: 100%;
-		max-inline-size: 80ch;
-	}
-
-	main.expand .controls button {
-		font-size: 3.8rem;
-	}
-
-	main > button {
+	main .preferences button:nth-child(1) {
 		view-transition-name: toggle-size;
 	}
 
@@ -216,5 +220,18 @@
 
 	main .controls button:nth-child(2) {
 		view-transition-name: reset;
+	}
+
+	main.expand {
+		inline-size: 100%;
+		max-inline-size: 80ch;
+	}
+
+	main.expand .preferences button:nth-child(2) {
+		display: none;
+	}
+
+	main.expand .controls button {
+		font-size: 3.8rem;
 	}
 </style>
