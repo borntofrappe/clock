@@ -55,8 +55,9 @@
 					stopwatch.toggle();
 					state = stopwatch.state === 'running' ? 'run' : 'wait';
 				}}
+				aria-pressed={state === 'run'}
 			>
-				<span class="visually-hidden">Start</span>
+				<span class="visually-hidden">Run</span>
 				{@html state === 'run' ? icons['pause'] : icons['start']}
 			</button>
 			<button
