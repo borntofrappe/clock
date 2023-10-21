@@ -97,11 +97,11 @@
 	main > svg[role='heading'] {
 		display: block;
 		inline-size: 100%;
-		color: hsl(0 0% 37%);
+		color: var(--color-subdued);
 	}
 
 	main > svg[data-state='run'] {
-		color: hsl(0 0% 11%);
+		color: var(--color);
 	}
 
 	main > div {
@@ -116,17 +116,17 @@
 		block-size: 2rem;
 		padding: 0.5rem;
 		border-radius: 0.5rem;
-		color: hsl(0 0% 11%);
+		color: var(--button-color);
 		background: none;
 		border: none;
 	}
 
 	main > button:not(:disabled):hover {
-		background: hsl(0 0% 88%);
+		background: var(--button-hover);
 	}
 
 	main > button:not(:disabled):active {
-		background: hsl(0 0% 92%);
+		background: var(--button-active);
 	}
 
 	main > button:disabled {
@@ -144,19 +144,19 @@
 		block-size: 1em;
 		padding: 0.33em;
 		border-radius: 0.5rem;
-		color: hsl(0 0% 11%);
-		background: hsl(0 0% 100%);
+		color: var(--button-color);
+		background: var(--button-background);
 		border: none;
 		box-shadow: 0 0 0.15rem -0.05rem currentColor, 0 0 0.5rem -0.4rem currentColor;
 		border-radius: 1e5px;
 	}
 
 	.controls button:not(:disabled):hover {
-		background: hsl(0 0% 88%);
+		background: var(--button-hover);
 	}
 
 	.controls button:not(:disabled):active {
-		background: hsl(0 0% 92%);
+		background: var(--button-active);
 	}
 
 	.controls button:disabled {
@@ -170,21 +170,21 @@
 	}
 
 	.controls > button:nth-child(1) {
-		color: hsl(0 0% 100%);
-		background: hsl(182 95% 24%);
+		color: var(--accent-color);
+		background: var(--accent-background);
 	}
 
 	.controls > button:nth-child(1):not(:disabled):hover {
-		background: hsl(182 66% 31%);
+		background: var(--accent-hover);
 	}
 
 	.controls > button:nth-child(1):not(:disabled):active {
-		color: hsl(182 30% 82%);
-		background: hsl(182 47% 38%);
+		color: var(--accent-active-color);
+		background: var(--accent-active-background);
 	}
 
 	.controls > button:nth-child(1):focus {
-		outline-color: hsl(182 95% 24%);
+		outline-color: var(--accent-background);
 	}
 
 	.controls button > :global(svg) {
