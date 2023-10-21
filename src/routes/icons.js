@@ -13,6 +13,22 @@ const icons = {
 </svg>`,
 	start: `<svg width="1em" height="1em" viewBox="-10 -10 20 20">
     <path fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M -6.5 -8 7 0 -6.5 8 Z" />
+</svg>`,
+	sun: `<svg width="1em" height="1em" viewBox="-10 -10 20 20">
+    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 0 -5.25 A 5.25 5.25 0 0 0 0 5.25 5.25 5.25 0 0 0 0 -5.25" />
+        <path id="ray-1" transform="translate(0 8)" d="M 0 0 V 1.5" /> 
+        <use href="#ray-1" transform="rotate(90)" /> 
+        <use href="#ray-1" transform="rotate(180)" /> 
+        <use href="#ray-1" transform="rotate(270)" /> 
+        <path id="ray-2" transform="translate(5.6 5.6)" d="M 0 0 1.2 1.2" /> 
+        <use href="#ray-2" transform="rotate(90)" /> 
+        <use href="#ray-2" transform="rotate(180)" /> 
+        <use href="#ray-2" transform="rotate(270)" /> 
+    </g>
+</svg>`,
+	moon: `<svg width="1em" height="1em" viewBox="-10 -10 20 20">
+    <path transform="rotate(35) translate(-5.5 0)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M 0 -5.5 A 5.5 5.5 0 0 1 0 5.5 8 8 0 1 0 0 -5.5" />
 </svg>`
 };
 
