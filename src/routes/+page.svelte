@@ -10,6 +10,9 @@
 	let state = null;
 
 	onMount(() => {
+		const dataTheme = document.documentElement.getAttribute('data-theme');
+		if (dataTheme === 'dark') theme = dataTheme;
+
 		state = 'watch';
 	});
 
@@ -27,6 +30,8 @@
 
 	const toggleTheme = () => {
 		theme = theme === 'light' ? 'dark' : 'light';
+		document.documentElement.setAttribute('data-theme', theme);
+		localStorage.setItem('theme', theme);
 	};
 
 	$: [hours, minutes, seconds, hundredths] = getTime($stopwatch).map((d) =>

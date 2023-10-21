@@ -74,6 +74,42 @@
 	}
 }
 
+[data-theme='light'] {
+	color-scheme: light;
+	--color: var(--color-light);
+	--color-dim: var(--color-dim-light);
+	--background: var(--background-light);
+
+	--button-color: var(--button-color-light);
+	--button-background: var(--button-background-light);
+	--button-hover: var(--button-hover-light);
+	--button-active: var(--button-active-light);
+
+	--accent-color: var(--accent-color-light);
+	--accent-background: var(--accent-background-light);
+	--accent-hover: var(--accent-hover-light);
+	--accent-active-color: var(--accent-active-color-light);
+	--accent-active-background: var(--accent-active-background-light);
+}
+
+[data-theme='dark'] {
+	color-scheme: dark;
+	--color: var(--color-dark);
+	--color-dim: var(--color-dim-dark);
+	--background: var(--background-dark);
+
+	--button-color: var(--button-color-dark);
+	--button-background: var(--button-background-dark);
+	--button-hover: var(--button-hover-dark);
+	--button-active: var(--button-active-dark);
+
+	--accent-color: var(--accent-color-dark);
+	--accent-background: var(--accent-background-dark);
+	--accent-hover: var(--accent-hover-dark);
+	--accent-active-color: var(--accent-active-color-dark);
+	--accent-active-background: var(--accent-active-background-dark);
+}
+
 body {
 	margin: 0;
 	color: var(--color);

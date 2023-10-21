@@ -21,6 +21,11 @@
 			}
 		</style>
 	</head>
+
+	<script>
+		localStorage.getItem('theme') &&
+			document.documentElement.setAttribute('data-theme', localStorage.getItem('theme'));
+	</script>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
