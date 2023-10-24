@@ -116,7 +116,7 @@
 	main > svg[role='heading'] {
 		display: block;
 		inline-size: 100%;
-		color: var(--color-subdued);
+		color: var(--color-dim);
 	}
 
 	main > svg[data-state='run'] {
