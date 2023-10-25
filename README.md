@@ -1,3 +1,7 @@
-# clock
+# [stopwatch](stopwatch-sweet-lemon.vercel.app/)
 
-Web app built after Window's 11 built-in _"Clock"_ app. Immediately, a stopwatch app to measure time from a prompted instant.
+A web app to keep track of time
+
+- built with SvelteKit
+
+- deployed with Vercel
