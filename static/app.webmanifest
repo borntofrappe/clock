@@ -1,0 +1,48 @@
+{
+    "name": "Stopwatch",
+    "short_name": "Stopwatch",
+    "description": "Time tracking device",
+    "icons": [
+        {
+            "src": "/icon.svg",
+            "type": "image/svg+xml",
+            "sizes": "any"
+        },
+        {
+            "src": "/images/icon-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/images/icon-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        },
+        {
+            "src": "/images/icon-512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "maskable"
+        }
+    ],
+    "start_url": "/",
+    "id": "/",
+    "scope": "/",
+    "theme_color": "hsl(0 0% 11%)",
+    "background_color": "hsl(0 0% 96%)",
+    "display": "standalone",
+    "screenshots": [
+        {
+            "src": "/images/screenshot-narrow.jpg",
+            "type": "image/jpg",
+            "sizes": "450x600",
+            "form_factor": "narrow"
+        },
+        {
+            "src": "/images/screenshot-wide.jpg",
+            "type": "images/jpg",
+            "sizes": "1080x520",
+            "form_factor": "wide"
+        }
+    ]
+}
