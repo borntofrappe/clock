@@ -1,4 +1,4 @@
-# [stopwatch](stopwatch-sweet-lemon.vercel.app/)
+# [stopwatch](https://stopwatch-sweet-lemon.vercel.app/)
 
 A web app to keep track of time
 
