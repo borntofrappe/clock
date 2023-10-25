@@ -9,7 +9,7 @@ const sw = /** @type {ServiceWorkerGlobalScope} */ (/** @type {unknown} */ (self
 
 const CACHE = `cache-${version}`;
 
-const ASSETS = [...build, ...files];
+const ASSETS = ['/', ...build, ...files];
 
 sw.addEventListener('install', (event) => {
 	const addFilesToCache = async () => {
