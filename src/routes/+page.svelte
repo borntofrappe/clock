@@ -79,6 +79,15 @@
 				{@html state === 'run' ? icons['pause'] : icons['start']}
 			</button>
 			<button
+				disabled={state !== 'run'}
+				on:click={() => {
+					// set lap
+				}}
+			>
+				<span class="visually-hidden">Laps</span>
+				{@html icons['flag']}
+			</button>
+			<button
 				disabled={state === null || $stopwatch === 0}
 				on:click={() => {
 					stopwatch.reset();
@@ -261,6 +270,10 @@
 	}
 
 	main .controls button:nth-child(2) {
+		view-transition-name: laps;
+	}
+
+	main .controls button:nth-child(3) {
 		view-transition-name: reset;
 	}
 
@@ -269,7 +282,8 @@
 		max-inline-size: 80ch;
 	}
 
-	main.expand .preferences button:nth-child(2) {
+	main.expand .preferences button:nth-child(2),
+	main.expand .controls button:nth-child(2) {
 		display: none;
 	}
 
