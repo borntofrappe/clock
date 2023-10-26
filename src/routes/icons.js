@@ -14,6 +14,9 @@ const icons = {
 	start: `<svg width="1em" height="1em" viewBox="-10 -10 20 20">
     <path fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M -6.5 -8 7 0 -6.5 8 Z" />
 </svg>`,
+	flag: `<svg width="1em" height="1em" viewBox="-10 -10 20 20">
+    <path fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M -8 9.5 -8 -9.5 8 -9.5 3.5 -3 8 3.5 -8 3.5 Z" />
+</svg>`,
 	sun: `<svg width="1em" height="1em" viewBox="-10 -10 20 20">
     <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
         <path d="M 0 -5.25 A 5.25 5.25 0 0 0 0 5.25 5.25 5.25 0 0 0 0 -5.25" />
