@@ -19,7 +19,7 @@
             "sizes": "512x512"
         },
         {
-            "src": "/images/icon-512.png",
+            "src": "/images/icon-maskable.jpg",
             "type": "image/png",
             "sizes": "512x512",
             "purpose": "maskable"
@@ -35,13 +35,13 @@
         {
             "src": "/images/screenshot-narrow.jpg",
             "type": "image/jpg",
-            "sizes": "450x600",
+            "sizes": "480x720",
             "form_factor": "narrow"
         },
         {
             "src": "/images/screenshot-wide.jpg",
             "type": "images/jpg",
-            "sizes": "1080x520",
+            "sizes": "720x480",
             "form_factor": "wide"
         }
     ]
