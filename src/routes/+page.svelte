@@ -39,8 +39,8 @@
 	);
 </script>
 
-<div class="center">
-	<main class:expand>
+<div class="layout" class:expand>
+	<main>
 		<div class="preferences">
 			<button disabled={state === null} on:click={toggleExpand} aria-pressed={expand}>
 				<span class="visually-hidden">Expand</span>
@@ -99,195 +99,95 @@
 			</button>
 		</div>
 	</main>
+
+	<ol role="list">
+		<li class="visually-hidden">
+			<span>Lap</span>
+			<span>Time</span>
+			<span>Total</span>
+		</li>
+		<li>
+			<span>02</span>
+			<span>+ 00:00:02.66</span>
+			<span>00:00:04.60</span>
+		</li>
+		<li>
+			<span>01</span>
+			<span>+ 00:00:01.94</span>
+			<span>00:00:01.94</span>
+		</li>
+	</ol>
 </div>
 
 <style>
-	.center {
+	.layout {
+		padding-block-start: max(10vb, 1rem);
+		padding-inline: 5%;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
 		min-height: 100svb;
-	}
-
-	main {
 		max-inline-size: 60ch;
-		inline-size: 90%;
-		padding: 1rem;
+		margin-inline: auto;
 	}
 
-	main > div.preferences {
-		display: flex;
-		justify-content: end;
-		gap: 0rem;
-	}
-
-	main > svg[role='heading'] {
-		display: block;
-		inline-size: 100%;
-		color: var(--color-dim);
-	}
-
-	main > svg[data-state='run'] {
-		color: var(--color);
-	}
-
-	main > div.controls {
-		margin-block-start: 1.5rem;
-		display: flex;
+	.layout.expand {
+		padding-block-start: 0;
+		padding-inline: 0;
+		max-inline-size: 80ch;
 		justify-content: center;
-		gap: 2rem;
 	}
 
-	.preferences button {
-		inline-size: 2.2rem;
-		block-size: 2.2rem;
-		padding: 0.6rem;
-		border-radius: 0.5rem;
-		color: var(--button-color);
-		background: none;
-		border: none;
-	}
-
-	.preferences button:not(:disabled):hover {
-		background: var(--button-hover);
-	}
-
-	.preferences button:not(:disabled):active {
-		background: var(--button-active);
-	}
-
-	.preferences button:disabled {
-		opacity: 0.6;
-	}
-
-	.preferences button:focus {
-		outline-offset: 2px;
-		outline-color: currentColor;
-	}
-
-	.preferences button > :global(svg) {
-		display: block;
-		inline-size: 100%;
-		block-size: 100%;
-	}
-
-	.preferences > button:nth-child(2) > :global(svg:nth-of-type(2)) {
+	.layout.expand .preferences button:nth-child(2),
+	.layout.expand .controls button:nth-child(2),
+	.layout.expand ol {
 		display: none;
 	}
 
-	@media (prefers-color-scheme: dark) {
-		:global([data-theme='dark']) .preferences > button:nth-child(2) > :global(svg:nth-of-type(1)) {
-			display: none;
-		}
-
-		:global([data-theme='dark']) .preferences > button:nth-child(2) > :global(svg:nth-of-type(2)) {
-			display: initial;
-		}
-	}
-
-	:global([data-theme='light']) .preferences > button:nth-child(2) > :global(svg:nth-of-type(1)) {
-		display: initial;
-	}
-
-	:global([data-theme='light']) .preferences > button:nth-child(2) > :global(svg:nth-of-type(2)) {
-		display: none;
-	}
-
-	:global([data-theme='dark']) .preferences > button:nth-child(2) > :global(svg:nth-of-type(1)) {
-		display: none;
-	}
-
-	:global([data-theme='dark']) .preferences > button:nth-child(2) > :global(svg:nth-of-type(2)) {
-		display: initial;
-	}
-
-	.controls button {
-		font-size: 3.2rem;
-		inline-size: 1em;
-		block-size: 1em;
-		padding: 0.33em;
-		border-radius: 0.5rem;
-		color: var(--button-color);
-		background: var(--button-background);
-		border: none;
-		box-shadow: 0 0 0.15rem -0.05rem currentColor, 0 0 0.5rem -0.4rem currentColor;
-		border-radius: 1e5px;
-	}
-
-	.controls button:not(:disabled):hover {
-		background: var(--button-hover);
-	}
-
-	.controls button:not(:disabled):active {
-		background: var(--button-active);
-	}
-
-	.controls button:disabled {
-		background: none;
-		opacity: 0.6;
-	}
-
-	.controls button:focus {
-		outline-offset: 2px;
-		outline-color: currentColor;
-	}
-
-	.controls > button:nth-child(1) {
-		color: var(--accent-color);
-		background: var(--accent-background);
-	}
-
-	.controls > button:nth-child(1):not(:disabled):hover {
-		background: var(--accent-hover);
-	}
-
-	.controls > button:nth-child(1):not(:disabled):active {
-		color: var(--accent-active-color);
-		background: var(--accent-active-background);
-	}
-
-	.controls > button:nth-child(1):focus {
-		outline-color: var(--accent-background);
-	}
-
-	.controls button > :global(svg) {
-		display: block;
-		inline-size: 100%;
-		block-size: 100%;
-	}
-
-	main .preferences button:nth-child(1) {
-		view-transition-name: toggle-size;
-	}
-
-	main svg[role='heading'] {
+	.layout svg[role='heading'] {
 		view-transition-name: heading;
 	}
 
-	main .controls button:nth-child(1) {
+	.layout .preferences button:nth-child(1) {
+		view-transition-name: toggle-size;
+	}
+
+	.layout .preferences button:nth-child(2) {
+		view-transition-name: toggle-theme;
+	}
+
+	.layout .controls button:nth-child(1) {
 		view-transition-name: toggle-start;
 	}
 
-	main .controls button:nth-child(2) {
-		view-transition-name: laps;
+	.layout .controls button:nth-child(2) {
+		view-transition-name: set-lap;
 	}
 
-	main .controls button:nth-child(3) {
+	.layout .controls button:nth-child(3) {
 		view-transition-name: reset;
 	}
 
-	main.expand {
-		inline-size: 100%;
-		max-inline-size: 80ch;
+	.layout ol {
+		view-transition-name: list-laps;
 	}
 
-	main.expand .preferences button:nth-child(2),
-	main.expand .controls button:nth-child(2) {
+	:global(html) {
+		view-timeline-name: none;
+	}
+
+	:global(::view-transition-old(toggle-theme)),
+	:global(::view-transition-old(set-lap)),
+	:global(::view-transition-old(list-laps)) {
 		display: none;
 	}
 
-	main.expand .controls button {
-		font-size: 3.8rem;
+	:global(::view-transition-group(*)) {
+		animation-duration: 0.25s;
+	}
+
+	:global(::view-transition-new(toggle-theme)),
+	:global(::view-transition-new(set-lap)),
+	:global(::view-transition-new(list-laps)) {
+		animation-delay: 0.25s;
 	}
 </style>
