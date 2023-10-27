@@ -231,6 +231,7 @@
 	}
 
 	ol {
+		font-feature-settings: 'tnum';
 		display: grid;
 		grid-template-columns: auto 1fr auto;
 	}
