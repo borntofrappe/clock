@@ -120,27 +120,8 @@
 </div>
 
 <style>
-	.layout {
-		padding-block-start: max(10vb, 1rem);
-		padding-inline: 5%;
-		display: flex;
-		flex-direction: column;
-		min-height: 100svb;
-		max-inline-size: 60ch;
-		margin-inline: auto;
-	}
-
-	.layout.expand {
-		padding-block-start: 0;
-		padding-inline: 0;
-		max-inline-size: 80ch;
-		justify-content: center;
-	}
-
-	.layout.expand .preferences button:nth-child(2),
-	.layout.expand .controls button:nth-child(2),
-	.layout.expand ol {
-		display: none;
+	:global(html) {
+		view-timeline-name: none;
 	}
 
 	.layout svg[role='heading'] {
@@ -171,10 +152,6 @@
 		view-transition-name: list-laps;
 	}
 
-	:global(html) {
-		view-timeline-name: none;
-	}
-
 	:global(::view-transition-old(toggle-theme)),
 	:global(::view-transition-old(set-lap)),
 	:global(::view-transition-old(list-laps)) {
@@ -189,5 +166,206 @@
 	:global(::view-transition-new(set-lap)),
 	:global(::view-transition-new(list-laps)) {
 		animation-delay: 0.25s;
+	}
+
+	.layout {
+		padding-block-start: max(10vb, 1rem);
+		padding-inline: 5%;
+		display: flex;
+		flex-direction: column;
+		min-height: 100svb;
+		max-inline-size: 60ch;
+		margin-inline: auto;
+	}
+
+	.layout.expand {
+		padding-block-start: 0;
+		padding-inline: 0;
+		max-inline-size: 80ch;
+		justify-content: center;
+	}
+
+	.layout.expand .preferences button:nth-child(2),
+	.layout.expand .controls button:nth-child(2),
+	.layout.expand ol {
+		display: none;
+	}
+
+	.layout > * + *,
+	main > * + * {
+		margin-block-start: var(--gap, 2rem);
+	}
+
+	main svg[role='heading'] {
+		--gap: 0;
+	}
+
+	.preferences {
+		display: flex;
+		justify-content: end;
+	}
+
+	.controls {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	ol {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+	}
+
+	ol li {
+		display: contents;
+	}
+
+	ol li:nth-child(1) {
+		display: initial;
+	}
+
+	li span {
+		text-align: end;
+	}
+
+	li span:nth-child(2) {
+		text-align: center;
+	}
+
+	svg[role='heading'] {
+		display: block;
+		color: var(--color-dim);
+	}
+
+	svg[role='heading'][data-state='run'] {
+		color: var(--color);
+	}
+
+	.preferences button {
+		inline-size: 2.2rem;
+		block-size: 2.2rem;
+		padding: 0.6rem;
+		border-radius: 0.5rem;
+		color: var(--button-color);
+		background: none;
+		border: none;
+	}
+
+	.preferences button:not(:disabled):hover {
+		background: var(--button-hover);
+	}
+
+	.preferences button:not(:disabled):active {
+		background: var(--button-active);
+	}
+
+	.preferences button:disabled {
+		opacity: 0.6;
+	}
+
+	.preferences button:focus {
+		outline-offset: 2px;
+		outline-color: currentColor;
+	}
+
+	.preferences button > :global(svg) {
+		display: block;
+		inline-size: 100%;
+		block-size: 100%;
+	}
+
+	.preferences button:nth-child(2) > :global(svg:nth-of-type(2)) {
+		display: none;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:global([data-theme='dark']) .preferences button:nth-child(2) > :global(svg:nth-of-type(1)) {
+			display: none;
+		}
+
+		:global([data-theme='dark']) .preferences button:nth-child(2) > :global(svg:nth-of-type(2)) {
+			display: initial;
+		}
+	}
+
+	:global([data-theme='light']) .preferences button:nth-child(2) > :global(svg:nth-of-type(1)) {
+		display: initial;
+	}
+
+	:global([data-theme='light']) .preferences button:nth-child(2) > :global(svg:nth-of-type(2)) {
+		display: none;
+	}
+
+	:global([data-theme='dark']) .preferences button:nth-child(2) > :global(svg:nth-of-type(1)) {
+		display: none;
+	}
+
+	:global([data-theme='dark']) .preferences button:nth-child(2) > :global(svg:nth-of-type(2)) {
+		display: initial;
+	}
+
+	.controls button {
+		font-size: 3.2rem;
+		inline-size: 1em;
+		block-size: 1em;
+		padding: 0.33em;
+		border-radius: 0.5rem;
+		color: var(--button-color);
+		background: var(--button-background);
+		border: none;
+		box-shadow: 0 0 0.15rem -0.05rem currentColor, 0 0 0.5rem -0.4rem currentColor;
+		border-radius: 1e5px;
+	}
+
+	.controls button:not(:disabled):hover {
+		background: var(--button-hover);
+	}
+
+	.controls button:not(:disabled):active {
+		background: var(--button-active);
+	}
+
+	.controls button:disabled {
+		background: none;
+		opacity: 0.6;
+	}
+
+	.controls button:focus {
+		outline-offset: 2px;
+		outline-color: currentColor;
+	}
+
+	.controls button:nth-child(1) {
+		color: var(--accent-color);
+		background: var(--accent-background);
+	}
+
+	.controls button:nth-child(1):not(:disabled):hover {
+		background: var(--accent-hover);
+	}
+
+	.controls button:nth-child(1):not(:disabled):active {
+		color: var(--accent-active-color);
+		background: var(--accent-active-background);
+	}
+
+	.controls button:nth-child(1):focus {
+		outline-color: var(--accent-background);
+	}
+
+	.controls button > :global(svg) {
+		display: block;
+		inline-size: 100%;
+		block-size: 100%;
+	}
+
+	ol {
+		list-style: none;
+		padding: 0;
+		font-size: 0.9em;
+	}
+
+	li span {
+		padding-block: 0.5rem;
 	}
 </style>
