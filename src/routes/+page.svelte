@@ -8,6 +8,8 @@
 	let theme = 'light';
 	/** @type {(null|'watch'|'run'|'wait')} */
 	let state = null;
+	/** @type Array<{time: number, index: string, lap: string, total: string}> */
+	let laps = [];
 
 	onMount(() => {
 		const dataTheme = document.documentElement.getAttribute('data-theme');
@@ -32,6 +34,35 @@
 		theme = theme === 'light' ? 'dark' : 'light';
 		document.documentElement.setAttribute('data-theme', theme);
 		localStorage.setItem('theme', theme);
+	};
+
+	const setLap = () => {
+		const [h, m, s, hh] = [hours, minutes, seconds, hundredths].map((d) => parseInt(d));
+		const time = (h * 3600 + m * 60 + s) * 1000 + hh * 10;
+
+		const index = (laps.length + 1).toString().padStart(2, '0');
+		const total = `${hours}:${minutes}:${seconds}.${hundredths}`;
+
+		let lap = '';
+		if (laps.length === 0) {
+			lap = total;
+		} else {
+			const [hours, minutes, seconds, hundredths] = getTime(time - laps[0].time).map((d) =>
+				d.toString().padStart(2, '0')
+			);
+
+			lap = `${hours}:${minutes}:${seconds}.${hundredths}`;
+		}
+
+		laps = [
+			{
+				time,
+				index,
+				lap,
+				total
+			},
+			...laps
+		];
 	};
 
 	$: [hours, minutes, seconds, hundredths] = getTime($stopwatch).map((d) =>
@@ -78,12 +109,7 @@
 				<span class="visually-hidden">Run</span>
 				{@html state === 'run' ? icons['pause'] : icons['start']}
 			</button>
-			<button
-				disabled={state !== 'run'}
-				on:click={() => {
-					// set lap
-				}}
-			>
+			<button disabled={state !== 'run'} on:click={setLap}>
 				<span class="visually-hidden">Laps</span>
 				{@html icons['flag']}
 			</button>
@@ -91,6 +117,7 @@
 				disabled={state === null || $stopwatch === 0}
 				on:click={() => {
 					stopwatch.reset();
+					laps = [];
 					state = stopwatch.state === 'running' ? 'run' : 'wait';
 				}}
 			>
@@ -101,21 +128,13 @@
 	</main>
 
 	<ol role="list">
-		<li class="visually-hidden">
-			<span>Lap</span>
-			<span>Time</span>
-			<span>Total</span>
-		</li>
-		<li>
-			<span>02</span>
-			<span>+ 00:00:02.66</span>
-			<span>00:00:04.60</span>
-		</li>
-		<li>
-			<span>01</span>
-			<span>+ 00:00:01.94</span>
-			<span>00:00:01.94</span>
-		</li>
+		{#each laps as { index, lap, total }}
+			<li>
+				<span>{index}</span>
+				<span>+ {lap}</span>
+				<span>{total}</span>
+			</li>
+		{/each}
 	</ol>
 </div>
 
@@ -218,10 +237,6 @@
 
 	ol li {
 		display: contents;
-	}
-
-	ol li:nth-child(1) {
-		display: initial;
 	}
 
 	li span {
