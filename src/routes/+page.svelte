@@ -181,18 +181,16 @@
 	}
 
 	.layout {
-		padding-block-start: max(10vb, 1rem);
-		padding-inline: 5%;
+		padding: max(10vb, 1rem) 2rem 1rem;
 		display: flex;
 		flex-direction: column;
 		block-size: 100svb;
-		max-inline-size: 60ch;
+		max-inline-size: 70ch;
 		margin-inline: auto;
 	}
 
 	.layout.expand {
-		padding-block-start: 0;
-		padding-inline: 0;
+		padding: 0 1rem;
 		max-inline-size: 80ch;
 		justify-content: center;
 	}
