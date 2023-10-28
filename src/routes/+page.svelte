@@ -2,6 +2,7 @@
 	import icons from './icons';
 	import { stopwatch, getTime } from '$lib';
 	import { onMount } from 'svelte';
+	import List from './List.svelte';
 
 	let expand = false;
 	/** @type {('light'|'dark')} */
@@ -127,15 +128,7 @@
 		</div>
 	</main>
 
-	<ol role="list">
-		{#each laps as { index, lap, total }}
-			<li>
-				<span>{index}</span>
-				<span>+ {lap}</span>
-				<span>{total}</span>
-			</li>
-		{/each}
-	</ol>
+	<List {laps} />
 </div>
 
 <style>
@@ -167,7 +160,7 @@
 		view-transition-name: reset;
 	}
 
-	.layout ol {
+	.layout > :global(ol) {
 		view-transition-name: list-laps;
 	}
 
@@ -192,7 +185,7 @@
 		padding-inline: 5%;
 		display: flex;
 		flex-direction: column;
-		min-height: 100svb;
+		block-size: 100svb;
 		max-inline-size: 60ch;
 		margin-inline: auto;
 	}
@@ -206,11 +199,11 @@
 
 	.layout.expand .preferences button:nth-child(2),
 	.layout.expand .controls button:nth-child(2),
-	.layout.expand ol {
+	.layout.expand :global(ol) {
 		display: none;
 	}
 
-	.layout > * + *,
+	.layout > :global(* + *),
 	main > * + * {
 		margin-block-start: var(--gap, 2rem);
 	}
@@ -230,22 +223,18 @@
 		gap: 1rem;
 	}
 
-	ol {
-		font-feature-settings: 'tnum';
-		display: grid;
-		grid-template-columns: auto 1fr auto;
+	.layout > :global(ol) {
+		block-size: 100%;
+		overflow-y: auto;
 	}
 
-	ol li {
-		display: contents;
+	.layout > :global(ol::-webkit-scrollbar) {
+		inline-size: 0.2rem;
 	}
 
-	li span {
-		text-align: end;
-	}
-
-	li span:nth-child(2) {
-		text-align: center;
+	.layout > :global(ol::-webkit-scrollbar-thumb) {
+		border-radius: 0.1rem;
+		background: var(--color-dim);
 	}
 
 	svg[role='heading'] {
@@ -373,15 +362,5 @@
 		display: block;
 		inline-size: 100%;
 		block-size: 100%;
-	}
-
-	ol {
-		list-style: none;
-		padding: 0;
-		font-size: 0.9em;
-	}
-
-	li span {
-		padding-block: 0.5rem;
 	}
 </style>
