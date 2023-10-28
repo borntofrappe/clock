@@ -23,7 +23,7 @@
 	});
 </script>
 
-<ol bind:this={list} role="list">
+<ol id="stopwatch-laps" bind:this={list} role="list">
 	{#each laps as { index, lap, total } (index)}
 		<li in:slide>
 			<span>{index}</span>

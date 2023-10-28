@@ -126,3 +126,51 @@ body {
 	position: absolute;
 	white-space: nowrap;
 }
+
+html {
+	view-transition-name: none;
+}
+
+svg#stopwatch-display {
+	view-transition-name: heading;
+}
+
+button#toggle-size {
+	view-transition-name: toggle-size;
+}
+
+button#toggle-theme {
+	view-transition-name: toggle-theme;
+}
+
+button#stopwatch-toggle {
+	view-transition-name: stopwatch-toggle;
+}
+
+button#stopwatch-set-lap {
+	view-transition-name: stopwatch-set-lap;
+}
+
+button#stopwatch-reset {
+	view-transition-name: stopwatch-reset;
+}
+
+ol#stopwatch-laps {
+	view-transition-name: stopwatch-laps;
+}
+
+::view-transition-group(*) {
+	animation-duration: 0.25s;
+}
+
+::view-transition-old(toggle-theme),
+::view-transition-old(stopwatch-set-lap),
+::view-transition-old(stopwatch-laps) {
+	display: none;
+}
+
+::view-transition-new(toggle-theme),
+::view-transition-new(stopwatch-set-lap),
+::view-transition-new(stopwatch-laps) {
+	animation-delay: 0.25s;
+}

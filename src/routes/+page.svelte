@@ -74,11 +74,21 @@
 <div class="layout" class:expand>
 	<main>
 		<div class="preferences">
-			<button disabled={state === null} on:click={toggleExpand} aria-pressed={expand}>
+			<button
+				id="toggle-size"
+				disabled={state === null}
+				on:click={toggleExpand}
+				aria-pressed={expand}
+			>
 				<span class="visually-hidden">Expand</span>
 				{@html expand ? icons['restore'] : icons['expand']}
 			</button>
-			<button disabled={state === null} on:click={toggleTheme} aria-pressed={theme === 'dark'}>
+			<button
+				id="toggle-theme"
+				disabled={state === null}
+				on:click={toggleTheme}
+				aria-pressed={theme === 'dark'}
+			>
 				<span class="visually-hidden">Set dark theme</span>
 				{@html icons['sun']}
 				{@html icons['moon']}
@@ -86,7 +96,7 @@
 		</div>
 
 		<!-- prettier-ignore -->
-		<svg data-state="{state}" aria-level={1} role="heading" viewBox="-9.2273 -11.795 86.27 17.841">
+		<svg id="stopwatch-display" data-state="{state}" aria-level={1} role="heading" viewBox="-9.2273 -11.795 86.27 17.841">
 			<g fill="currentColor" font-family="Inter, system-ui, sans-serif" style="font-feature-settings:'tnum'">
 			   <text text-anchor="middle"><tspan font-size="16">{hours}</tspan><tspan x="0" y="6" font-size="4">hr</tspan></text>
 			   <text x="10.049788" font-size="16">:</text>
@@ -100,6 +110,7 @@
 
 		<div class="controls">
 			<button
+				id="stopwatch-toggle"
 				disabled={state === null}
 				on:click={() => {
 					stopwatch.toggle();
@@ -110,11 +121,12 @@
 				<span class="visually-hidden">Run</span>
 				{@html state === 'run' ? icons['pause'] : icons['start']}
 			</button>
-			<button disabled={state !== 'run'} on:click={setLap}>
+			<button id="stopwatch-set-lap" disabled={state !== 'run'} on:click={setLap}>
 				<span class="visually-hidden">Laps</span>
 				{@html icons['flag']}
 			</button>
 			<button
+				id="stopwatch-reset"
 				disabled={state === null || $stopwatch === 0}
 				on:click={() => {
 					stopwatch.reset();
@@ -132,54 +144,6 @@
 </div>
 
 <style>
-	:global(html) {
-		view-timeline-name: none;
-	}
-
-	.layout svg[role='heading'] {
-		view-transition-name: heading;
-	}
-
-	.layout .preferences button:nth-child(1) {
-		view-transition-name: toggle-size;
-	}
-
-	.layout .preferences button:nth-child(2) {
-		view-transition-name: toggle-theme;
-	}
-
-	.layout .controls button:nth-child(1) {
-		view-transition-name: toggle-start;
-	}
-
-	.layout .controls button:nth-child(2) {
-		view-transition-name: set-lap;
-	}
-
-	.layout .controls button:nth-child(3) {
-		view-transition-name: reset;
-	}
-
-	.layout > :global(ol) {
-		view-transition-name: list-laps;
-	}
-
-	:global(::view-transition-old(toggle-theme)),
-	:global(::view-transition-old(set-lap)),
-	:global(::view-transition-old(list-laps)) {
-		display: none;
-	}
-
-	:global(::view-transition-group(*)) {
-		animation-duration: 0.25s;
-	}
-
-	:global(::view-transition-new(toggle-theme)),
-	:global(::view-transition-new(set-lap)),
-	:global(::view-transition-new(list-laps)) {
-		animation-delay: 0.25s;
-	}
-
 	.layout {
 		padding: max(10vb, 1rem) 2rem 1rem;
 		display: flex;
