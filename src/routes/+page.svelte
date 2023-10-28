@@ -1,7 +1,9 @@
 <script>
-	import icons from './icons';
-	import { stopwatch, getTime } from '$lib';
 	import { onMount } from 'svelte';
+
+	import { stopwatch, getTime } from '$lib';
+
+	import icons from './icons';
 	import List from './List.svelte';
 
 	let expand = false;
@@ -35,6 +37,17 @@
 		theme = theme === 'light' ? 'dark' : 'light';
 		document.documentElement.setAttribute('data-theme', theme);
 		localStorage.setItem('theme', theme);
+	};
+
+	const toggleStopwatch = () => {
+		stopwatch.toggle();
+		state = stopwatch.state === 'running' ? 'run' : 'wait';
+	};
+
+	const resetStopwatch = () => {
+		stopwatch.reset();
+		laps = [];
+		state = stopwatch.state === 'running' ? 'run' : 'wait';
 	};
 
 	const setLap = () => {
@@ -112,29 +125,22 @@
 			<button
 				id="stopwatch-toggle"
 				disabled={state === null}
-				on:click={() => {
-					stopwatch.toggle();
-					state = stopwatch.state === 'running' ? 'run' : 'wait';
-				}}
+				on:click={toggleStopwatch}
 				aria-pressed={state === 'run'}
 			>
-				<span class="visually-hidden">Run</span>
+				<span class="visually-hidden">Run stopwatch</span>
 				{@html state === 'run' ? icons['pause'] : icons['start']}
 			</button>
 			<button id="stopwatch-set-lap" disabled={state !== 'run'} on:click={setLap}>
-				<span class="visually-hidden">Laps</span>
+				<span class="visually-hidden">Set lap</span>
 				{@html icons['flag']}
 			</button>
 			<button
 				id="stopwatch-reset"
 				disabled={state === null || $stopwatch === 0}
-				on:click={() => {
-					stopwatch.reset();
-					laps = [];
-					state = stopwatch.state === 'running' ? 'run' : 'wait';
-				}}
+				on:click={resetStopwatch}
 			>
-				<span class="visually-hidden">Reset</span>
+				<span class="visually-hidden">Reset stopwatch</span>
 				{@html icons['reset']}
 			</button>
 		</div>
@@ -159,9 +165,9 @@
 		justify-content: center;
 	}
 
-	.layout.expand .preferences button:nth-child(2),
-	.layout.expand .controls button:nth-child(2),
-	.layout.expand :global(ol) {
+	.layout.expand #toggle-theme,
+	.layout.expand #stopwatch-set-lap,
+	.layout.expand :global(#stopwatch-laps) {
 		display: none;
 	}
 
@@ -170,7 +176,7 @@
 		margin-block-start: var(--gap, 2rem);
 	}
 
-	main svg[role='heading'] {
+	main > svg {
 		--gap: 0;
 	}
 
@@ -199,12 +205,12 @@
 		background: var(--color-dim);
 	}
 
-	svg[role='heading'] {
+	svg#stopwatch-display {
 		display: block;
 		color: var(--color-dim);
 	}
 
-	svg[role='heading'][data-state='run'] {
+	svg#stopwatch-display[data-state='run'] {
 		color: var(--color);
 	}
 

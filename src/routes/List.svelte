@@ -1,5 +1,5 @@
 <script>
-	import { onMount, beforeUpdate, afterUpdate } from 'svelte';
+	import { beforeUpdate, afterUpdate } from 'svelte';
 	import { slide } from 'svelte/transition';
 
 	/** @type {(null|HTMLOListElement)} */
@@ -39,7 +39,6 @@
 		font-size: 0.9em;
 		list-style: none;
 		padding: 0;
-		scroll-behavior: smooth;
 	}
 
 	li {
@@ -59,9 +58,9 @@
 		}
 	}
 
-	@media (prefers-reduced-motion: reduce) {
+	@media (prefers-reduced-motion: no-preference) {
 		ol {
-			scroll-behavior: auto;
+			scroll-behavior: smooth;
 		}
 	}
 </style>
