@@ -3,27 +3,27 @@
 	import { slide } from 'svelte/transition';
 
 	/** @type {(null|HTMLOListElement)} */
-	let list = null;
+	let listElement = null;
 	let scrollToTop = false;
 
 	/** @type Array<{time: number, index: string, lap: string, total: string}> */
 	export let lapTimes = [];
 
 	beforeUpdate(() => {
-		if (list === null) return;
+		if (listElement === null) return;
 
-		scrollToTop = list.scrollTop > 0;
+		scrollToTop = listElement.scrollTop > 0;
 	});
 
 	afterUpdate(() => {
-		if (list === null) return;
+		if (listElement === null) return;
 		if (scrollToTop) {
-			list.scrollTo(0, 0);
+			listElement.scrollTo(0, 0);
 		}
 	});
 </script>
 
-<ol id="stopwatch-laps" bind:this={list} role="list">
+<ol id="stopwatch-laps" bind:this={listElement} role="list">
 	{#each lapTimes as { index, lap, total } (index)}
 		<li in:slide>
 			<span>{index}</span>
