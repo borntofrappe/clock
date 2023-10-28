@@ -7,7 +7,7 @@
 	let scrollToTop = false;
 
 	/** @type Array<{time: number, index: string, lap: string, total: string}> */
-	export let laps = [];
+	export let lapTimes = [];
 
 	beforeUpdate(() => {
 		if (list === null) return;
@@ -24,7 +24,7 @@
 </script>
 
 <ol id="stopwatch-laps" bind:this={list} role="list">
-	{#each laps as { index, lap, total } (index)}
+	{#each lapTimes as { index, lap, total } (index)}
 		<li in:slide>
 			<span>{index}</span>
 			<span>+ {lap}</span>

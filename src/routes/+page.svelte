@@ -4,7 +4,7 @@
 	import { stopwatch, getTime } from '$lib';
 
 	import icons from './icons';
-	import List from './List.svelte';
+	import LapTimes from './LapTimes.svelte';
 
 	let expand = false;
 	/** @type {('light'|'dark')} */
@@ -12,7 +12,7 @@
 	/** @type {(null|'watch'|'run'|'wait')} */
 	let state = null;
 	/** @type Array<{time: number, index: string, lap: string, total: string}> */
-	let laps = [];
+	let lapTimes = [];
 
 	onMount(() => {
 		const dataTheme = document.documentElement.getAttribute('data-theme');
@@ -46,36 +46,36 @@
 
 	const resetStopwatch = () => {
 		stopwatch.reset();
-		laps = [];
+		lapTimes = [];
 		state = stopwatch.state === 'running' ? 'run' : 'wait';
 	};
 
-	const setLap = () => {
+	const addLapTime = () => {
 		const [h, m, s, hh] = [hours, minutes, seconds, hundredths].map((d) => parseInt(d));
 		const time = (h * 3600 + m * 60 + s) * 1000 + hh * 10;
 
-		const index = (laps.length + 1).toString().padStart(2, '0');
+		const index = (lapTimes.length + 1).toString().padStart(2, '0');
 		const total = `${hours}:${minutes}:${seconds}.${hundredths}`;
 
 		let lap = '';
-		if (laps.length === 0) {
+		if (lapTimes.length === 0) {
 			lap = total;
 		} else {
-			const [hours, minutes, seconds, hundredths] = getTime(time - laps[0].time).map((d) =>
+			const [hours, minutes, seconds, hundredths] = getTime(time - lapTimes[0].time).map((d) =>
 				d.toString().padStart(2, '0')
 			);
 
 			lap = `${hours}:${minutes}:${seconds}.${hundredths}`;
 		}
 
-		laps = [
+		lapTimes = [
 			{
 				time,
 				index,
 				lap,
 				total
 			},
-			...laps
+			...lapTimes
 		];
 	};
 
@@ -131,7 +131,7 @@
 				<span class="visually-hidden">Run stopwatch</span>
 				{@html state === 'run' ? icons['pause'] : icons['start']}
 			</button>
-			<button id="stopwatch-set-lap" disabled={state !== 'run'} on:click={setLap}>
+			<button id="stopwatch-set-lap" disabled={state !== 'run'} on:click={addLapTime}>
 				<span class="visually-hidden">Set lap</span>
 				{@html icons['flag']}
 			</button>
@@ -146,7 +146,7 @@
 		</div>
 	</main>
 
-	<List {laps} />
+	<LapTimes {lapTimes} />
 </div>
 
 <style>
