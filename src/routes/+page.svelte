@@ -109,7 +109,7 @@
 		</div>
 
 		<!-- prettier-ignore -->
-		<svg id="stopwatch-display" data-state="{state}" aria-level={1} role="heading" viewBox="-9.2273 -11.795 86.27 17.841">
+		<svg id="stopwatch-display" data-active={state === 'run'} aria-level={1} role="heading" viewBox="-9.2273 -11.795 86.27 17.841">
 			<g fill="currentColor" font-family="Inter, system-ui, sans-serif" style="font-feature-settings:'tnum'">
 			   <text text-anchor="middle"><tspan font-size="16">{hours}</tspan><tspan x="0" y="6" font-size="4">hr</tspan></text>
 			   <text x="10.049788" font-size="16">:</text>
@@ -124,6 +124,7 @@
 		<div class="controls">
 			<button
 				id="stopwatch-toggle"
+				data-role="primary"
 				disabled={state === null}
 				on:click={toggleStopwatch}
 				aria-pressed={state === 'run'}
@@ -207,11 +208,10 @@
 
 	svg#stopwatch-display {
 		display: block;
-		color: var(--color-dim);
 	}
 
-	svg#stopwatch-display[data-state='run'] {
-		color: var(--color);
+	svg#stopwatch-display[data-active='false'] {
+		color: var(--color-dim);
 	}
 
 	.preferences button {
@@ -225,11 +225,12 @@
 	}
 
 	.preferences button:not(:disabled):hover {
-		background: var(--button-hover);
+		background: var(--button-background-hover);
 	}
 
 	.preferences button:not(:disabled):active {
-		background: var(--button-active);
+		color: var(--button-color-active);
+		background: var(--button-background-active);
 	}
 
 	.preferences button:disabled {
@@ -291,11 +292,20 @@
 	}
 
 	.controls button:not(:disabled):hover {
-		background: var(--button-hover);
+		background: var(--button-background-hover);
 	}
 
 	.controls button:not(:disabled):active {
-		background: var(--button-active);
+		color: var(--button-color-active);
+		background: var(--button-background-active);
+	}
+
+	.controls button[data-role='primary'] {
+		--button-color: var(--button-primary-color);
+		--button-background: var(--button-primary-background);
+		--button-background-hover: var(--button-primary-background-hover);
+		--button-color-active: var(--button-primary-color-active);
+		--button-background-active: var(--button-primary-background-active);
 	}
 
 	.controls button:disabled {
@@ -306,24 +316,6 @@
 	.controls button:focus {
 		outline-offset: 2px;
 		outline-color: currentColor;
-	}
-
-	.controls button:nth-child(1) {
-		color: var(--accent-color);
-		background: var(--accent-background);
-	}
-
-	.controls button:nth-child(1):not(:disabled):hover {
-		background: var(--accent-hover);
-	}
-
-	.controls button:nth-child(1):not(:disabled):active {
-		color: var(--accent-active-color);
-		background: var(--accent-active-background);
-	}
-
-	.controls button:nth-child(1):focus {
-		outline-color: var(--accent-background);
 	}
 
 	.controls button > :global(svg) {
