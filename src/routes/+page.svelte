@@ -224,7 +224,7 @@
 		border: none;
 	}
 
-	.preferences button:not(:disabled):hover {
+	.preferences button:not(:disabled):not(:focus):hover {
 		background: var(--button-background-hover);
 	}
 
@@ -291,7 +291,7 @@
 		border-radius: 1e5px;
 	}
 
-	.controls button:not(:disabled):hover {
+	.controls button:not(:disabled):not(:focus):hover {
 		background: var(--button-background-hover);
 	}
 
