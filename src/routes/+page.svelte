@@ -242,6 +242,10 @@
 		outline-offset: 2px;
 	}
 
+	.preferences button:focus:not(:focus-visible) {
+		outline: none;
+	}
+
 	.preferences button > :global(svg) {
 		display: block;
 		inline-size: 100%;
@@ -306,6 +310,10 @@
 	.controls button:focus {
 		outline: var(--button-outline-color) solid 2px;
 		outline-offset: 2px;
+	}
+
+	.controls button:focus:not(:focus-visible) {
+		outline: none;
 	}
 
 	.controls button[data-role='primary'] {
