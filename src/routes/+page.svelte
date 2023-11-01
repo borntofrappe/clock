@@ -279,16 +279,14 @@
 	}
 
 	.controls button {
-		font-size: 3.2rem;
-		inline-size: 1em;
-		block-size: 1em;
-		padding: 0.33em;
-		border-radius: 0.5rem;
+		inline-size: 3.2rem;
+		block-size: 3.2rem;
+		padding: 1.05rem;
+		border-radius: 1e5px;
 		color: var(--button-color);
 		background: var(--button-background);
 		border: none;
 		box-shadow: 0 0 0.15rem -0.05rem currentColor, 0 0 0.5rem -0.4rem currentColor;
-		border-radius: 1e5px;
 	}
 
 	.controls button:not(:disabled):not(:focus):hover {
