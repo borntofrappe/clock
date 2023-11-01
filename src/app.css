@@ -8,32 +8,30 @@
 	--color-light: hsl(0 0% 11%);
 	--color-dim-light: hsl(0 0% 37%);
 	--background-light: hsl(0 0% 96%);
-
 	--button-color-light: hsl(0 0% 11%);
 	--button-background-light: hsl(0 0% 100%);
-	--button-hover-light: hsl(0 0% 88%);
-	--button-active-light: hsl(0 0% 92%);
-
-	--accent-color-light: hsl(0 0% 100%);
-	--accent-background-light: hsl(182 95% 24%);
-	--accent-hover-light: hsl(182 66% 31%);
-	--accent-active-color-light: hsl(182 30% 82%);
-	--accent-active-background-light: hsl(182 47% 38%);
+	--button-background-hover-light: hsl(0 0% 88%);
+	--button-color-active-light: var(--button-color-light);
+	--button-background-active-light: hsl(0 0% 92%);
+	--button-primary-color-light: hsl(0 0% 100%);
+	--button-primary-background-light: hsl(182 95% 24%);
+	--button-primary-background-hover-light: hsl(182 66% 31%);
+	--button-primary-color-active-light: hsl(182 30% 82%);
+	--button-primary-background-active-light: hsl(182 47% 38%);
 
 	--color-dark: hsl(0 0% 100%);
 	--color-dim-dark: hsl(0 0% 81%);
 	--background-dark: hsl(0, 0%, 15%);
-
 	--button-color-dark: hsl(0 0% 100%);
 	--button-background-dark: hsl(0 0% 20%);
-	--button-hover-dark: hsl(0 0% 24%);
-	--button-active-dark: hsl(0 0% 18%);
-
-	--accent-color-dark: hsl(0 0% 0%);
-	--accent-background-dark: hsl(181 96% 55%);
-	--accent-hover-dark: hsl(181 79% 51%);
-	--accent-active-color-dark: hsl(181 72% 24%);
-	--accent-active-background-dark: hsl(181 72% 47%);
+	--button-background-hover-dark: hsl(0 0% 24%);
+	--button-color-active-dark: var(--button-color-dark);
+	--button-background-active-dark: hsl(0 0% 18%);
+	--button-primary-color-dark: hsl(0 0% 0%);
+	--button-primary-background-dark: hsl(181 96% 55%);
+	--button-primary-background-hover-dark: hsl(181 79% 51%);
+	--button-primary-color-active-dark: hsl(181 72% 24%);
+	--button-primary-background-active-dark: hsl(181 72% 47%);
 }
 
 :root {
@@ -41,17 +39,16 @@
 	--color: var(--color-light);
 	--color-dim: var(--color-dim-light);
 	--background: var(--background-light);
-
 	--button-color: var(--button-color-light);
 	--button-background: var(--button-background-light);
-	--button-hover: var(--button-hover-light);
-	--button-active: var(--button-active-light);
-
-	--accent-color: var(--accent-color-light);
-	--accent-background: var(--accent-background-light);
-	--accent-hover: var(--accent-hover-light);
-	--accent-active-color: var(--accent-active-color-light);
-	--accent-active-background: var(--accent-active-background-light);
+	--button-background-hover: var(--button-background-hover-light);
+	--button-color-active: var(--button-color-active-light);
+	--button-background-active: var(--button-background-active-light);
+	--button-primary-color: var(--button-primary-color-light);
+	--button-primary-background: var(--button-primary-background-light);
+	--button-primary-background-hover: var(--button-primary-background-hover-light);
+	--button-primary-color-active: var(--button-primary-color-active-light);
+	--button-primary-background-active: var(--button-primary-background-active-light);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,17 +57,16 @@
 		--color: var(--color-dark);
 		--color-dim: var(--color-dim-dark);
 		--background: var(--background-dark);
-
 		--button-color: var(--button-color-dark);
 		--button-background: var(--button-background-dark);
-		--button-hover: var(--button-hover-dark);
-		--button-active: var(--button-active-dark);
-
-		--accent-color: var(--accent-color-dark);
-		--accent-background: var(--accent-background-dark);
-		--accent-hover: var(--accent-hover-dark);
-		--accent-active-color: var(--accent-active-color-dark);
-		--accent-active-background: var(--accent-active-background-dark);
+		--button-background-hover: var(--button-background-hover-dark);
+		--button-color-active: var(--button-color-active-dark);
+		--button-background-active: var(--button-background-active-dark);
+		--button-primary-color: var(--button-primary-color-dark);
+		--button-primary-background: var(--button-primary-background-dark);
+		--button-primary-background-hover: var(--button-primary-background-hover-dark);
+		--button-primary-color-active: var(--button-primary-color-active-dark);
+		--button-primary-background-active: var(--button-primary-background-active-dark);
 	}
 }
 
@@ -79,17 +75,16 @@
 	--color: var(--color-light);
 	--color-dim: var(--color-dim-light);
 	--background: var(--background-light);
-
 	--button-color: var(--button-color-light);
 	--button-background: var(--button-background-light);
-	--button-hover: var(--button-hover-light);
-	--button-active: var(--button-active-light);
-
-	--accent-color: var(--accent-color-light);
-	--accent-background: var(--accent-background-light);
-	--accent-hover: var(--accent-hover-light);
-	--accent-active-color: var(--accent-active-color-light);
-	--accent-active-background: var(--accent-active-background-light);
+	--button-background-hover: var(--button-background-hover-light);
+	--button-color-active: var(--button-color-active-light);
+	--button-background-active: var(--button-background-active-light);
+	--button-primary-color: var(--button-primary-color-light);
+	--button-primary-background: var(--button-primary-background-light);
+	--button-primary-background-hover: var(--button-primary-background-hover-light);
+	--button-primary-color-active: var(--button-primary-color-active-light);
+	--button-primary-background-active: var(--button-primary-background-active-light);
 }
 
 [data-theme='dark'] {
@@ -97,17 +92,16 @@
 	--color: var(--color-dark);
 	--color-dim: var(--color-dim-dark);
 	--background: var(--background-dark);
-
 	--button-color: var(--button-color-dark);
 	--button-background: var(--button-background-dark);
-	--button-hover: var(--button-hover-dark);
-	--button-active: var(--button-active-dark);
-
-	--accent-color: var(--accent-color-dark);
-	--accent-background: var(--accent-background-dark);
-	--accent-hover: var(--accent-hover-dark);
-	--accent-active-color: var(--accent-active-color-dark);
-	--accent-active-background: var(--accent-active-background-dark);
+	--button-background-hover: var(--button-background-hover-dark);
+	--button-color-active: var(--button-color-active-dark);
+	--button-background-active: var(--button-background-active-dark);
+	--button-primary-color: var(--button-primary-color-dark);
+	--button-primary-background: var(--button-primary-background-dark);
+	--button-primary-background-hover: var(--button-primary-background-hover-dark);
+	--button-primary-color-active: var(--button-primary-color-active-dark);
+	--button-primary-background-active: var(--button-primary-background-active-dark);
 }
 
 body {
