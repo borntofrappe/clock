@@ -238,8 +238,8 @@
 	}
 
 	.preferences button:focus {
+		outline: var(--button-outline-color) solid 2px;
 		outline-offset: 2px;
-		outline-color: currentColor;
 	}
 
 	.preferences button > :global(svg) {
@@ -300,22 +300,23 @@
 		background: var(--button-background-active);
 	}
 
-	.controls button[data-role='primary'] {
-		--button-color: var(--button-primary-color);
-		--button-background: var(--button-primary-background);
-		--button-background-hover: var(--button-primary-background-hover);
-		--button-color-active: var(--button-primary-color-active);
-		--button-background-active: var(--button-primary-background-active);
-	}
-
 	.controls button:disabled {
 		background: none;
 		opacity: 0.6;
 	}
 
 	.controls button:focus {
+		outline: var(--button-outline-color) solid 2px;
 		outline-offset: 2px;
-		outline-color: currentColor;
+	}
+
+	.controls button[data-role='primary'] {
+		--button-color: var(--button-primary-color);
+		--button-background: var(--button-primary-background);
+		--button-background-hover: var(--button-primary-background-hover);
+		--button-color-active: var(--button-primary-color-active);
+		--button-background-active: var(--button-primary-background-active);
+		--button-outline-color: var(--button-primary-outline-color);
 	}
 
 	.controls button > :global(svg) {
