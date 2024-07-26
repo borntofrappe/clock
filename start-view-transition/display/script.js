@@ -1,16 +1,18 @@
-const buttonToggleSize = document.querySelector("button#toggle-size");
+const buttonToggleDisplay = document.querySelector("button#toggle-display");
 
 if (document.documentElement.getAttribute("data-mode") === "display") {
-  buttonToggleSize.setAttribute("aria-pressed", "true");
+  buttonToggleDisplay.setAttribute("aria-pressed", "true");
 }
 
-const toggleSize = () => {
-  const size =
-    buttonToggleSize.getAttribute("aria-pressed") === "true" ? "display" : "default";
-  document.documentElement.setAttribute("data-mode", size);
+const toggleDisplay = () => {
+  const mode =
+    buttonToggleDisplay.getAttribute("aria-pressed") === "true" ? "display" : "default";
+  document.documentElement.setAttribute("data-mode", mode);
+
+  localStorage.setItem('data-mode', mode)
 };
 
-buttonToggleSize.addEventListener("click", function () {
+buttonToggleDisplay.addEventListener("click", function () {
   this.setAttribute(
     "aria-pressed",
     this.getAttribute("aria-pressed") === "true" ? "false" : "true"
@@ -18,9 +20,9 @@ buttonToggleSize.addEventListener("click", function () {
 
   if (document.startViewTransition) {
     document.startViewTransition(() => {
-      toggleSize();
+      toggleDisplay();
     });
   } else {
-    toggleSize();
+    toggleDisplay();
   }
 });
