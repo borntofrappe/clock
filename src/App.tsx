@@ -4,6 +4,24 @@ function App() {
   return (
     <>
       <Icons />
+      <div class="preferences">
+        <button aria-label="Toggle large display" aria-pressed="false">
+          <svg data-pressed="false" width="1em" height="1em" viewBox="0 0 1 1">
+            <use href="#icon-expand" width="1" height="1" />
+          </svg>
+          <svg data-pressed="true" display="none" width="1em" height="1em" viewBox="0 0 1 1">
+            <use href="#icon-reduce" width="1" height="1" />
+          </svg>
+        </button>
+        <button aria-label="Toggle dark theme" aria-pressed="false">
+          <svg width="1em" height="1em" viewBox="0 0 1 1">
+            <use href="#icon-sun" width="1" height="1" />
+          </svg>
+          <svg data-pressed="true" display="none" width="1em" height="1em" viewBox="0 0 1 1">
+            <use href="#icon-moon" width="1" height="1" />
+          </svg>
+        </button>
+      </div>
       <main>
         {/* prettier-ignore */}
         <svg class="display" role="heading" aria-level={1} display="block" viewBox="-9.63 -11.795 87.262 17.841">
