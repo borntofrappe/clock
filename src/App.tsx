@@ -37,6 +37,26 @@ function App() {
           </g>
         </svg>
       </main>
+      <div class="controls">
+        <button aria-label="Toggle stopwatch" aria-pressed="false">
+          <svg data-pressed="false" width="1em" height="1em" viewBox="0 0 1 1">
+            <use href="#icon-start" width="1" height="1" />
+          </svg>
+          <svg data-pressed="true" display="none" width="1em" height="1em" viewBox="0 0 1 1">
+            <use href="#icon-pause" width="1" height="1" />
+          </svg>
+        </button>
+        <button aria-label="Set laps" id="set-lap">
+          <svg width="1em" height="1em" viewBox="0 0 1 1">
+            <use href="#icon-flag" width="1" height="1" />
+          </svg>
+        </button>
+        <button aria-label="Reset stopwatch">
+          <svg width="1em" height="1em" viewBox="0 0 1 1">
+            <use href="#icon-reset" width="1" height="1" />
+          </svg>
+        </button>
+      </div>
     </>
   );
 }
