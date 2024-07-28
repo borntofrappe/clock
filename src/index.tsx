@@ -1,6 +1,8 @@
 /* @refresh reload */
 import { render } from 'solid-js/web'
 
+import App from './App'
+
 const root = document.getElementById('root')
 
-render(() => <h1>01:23:45.67</h1>, root!)
+render(() => <App />, root!)
