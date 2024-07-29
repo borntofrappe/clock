@@ -20,6 +20,9 @@ function Icons() {
     <symbol id="icon-start" viewBox="-10 -10 20 20">
       <path fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M -6.5 -8 7 0 -6.5 8 Z" />
     </symbol>
+    <symbol id="icon-pause" viewBox="-10 -10 20 20">
+      <path fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M -6.5 -8 -4 -8 -4 8 -6.5 8 Z M 6.5 -8 4 -8 4 8 6.5 8 Z" />
+    </symbol>
     <symbol id="icon-flag" viewBox="-10 -10 20 20">
       <path fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M -8 9.5 -8 -9.5 8 -9.5 3.5 -3 8 3.5 -8 3.5 Z" />
     </symbol>
