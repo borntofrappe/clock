@@ -1,0 +1,70 @@
+/* layout */
+.layout {
+  padding: 1rem 2rem;
+  max-inline-size: 65ch;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100svb;
+}
+
+.layout > * + * {
+  margin-block-start: 0.75rem;
+}
+
+.layout .controls {
+  margin-block-start: 1.5rem;
+}
+
+.preferences {
+  inline-size: max-content;
+  margin-inline-start: auto;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* style */
+/* needs top-down rewrite */
+.preferences button {
+  color: hsl(0 0% 20%);
+  background: inherit;
+  border: none;
+  border-radius: 0.5rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  padding: 0.6rem;
+}
+
+.preferences button:hover {
+  background: hsl(0 0% 93%);
+}
+
+.preferences button:focus-visible {
+  outline: 2px solid hsl(0 0% 30%);
+  outline-offset: 2px;
+}
+
+.preferences button > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.controls button {
+  color: hsl(0 0% 20%);
+  background: hsl(0 0% 90%);
+  border: none;
+  border-radius: 0.5rem;
+  width: 3rem;
+  height: 3rem;
+  padding: 1rem;
+  border-radius: 1e5px;
+}
+
+.controls button > svg {
+  width: 100%;
+  height: 100%;
+}

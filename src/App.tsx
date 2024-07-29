@@ -1,8 +1,9 @@
 import Icons from "./Icons";
+import './App.css'
 
 function App() {
   return (
-    <>
+    <div class="layout">
       <Icons />
       <div class="preferences">
         <button aria-label="Toggle large display" aria-pressed="false">
@@ -57,7 +58,7 @@ function App() {
           </svg>
         </button>
       </div>
-    </>
+    </div>
   );
 }
 

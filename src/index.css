@@ -1,0 +1,28 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  color: hsl(0 0% 20%);
+  background: hsl(0 0% 97%);
+  margin: 0;
+  min-block-size: 100svb;
+}
+
+button[aria-pressed="false"] [data-pressed="false"] {
+  display: initial;
+}
+
+button[aria-pressed="false"] [data-pressed="true"] {
+  display: none;
+}
+
+button[aria-pressed="true"] [data-pressed="false"] {
+  display: none;
+}
+
+button[aria-pressed="true"] [data-pressed="true"] {
+  display: initial;
+}
