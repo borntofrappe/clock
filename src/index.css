@@ -11,6 +11,8 @@ body {
   min-block-size: 100svb;
 }
 
+/* dark theme proof-of-concept */
+/* rewrite with use custom properties */
 body > * {
   background: inherit;
 }
@@ -19,6 +21,72 @@ html[data-theme="dark"] body {
   filter: invert();
 }
 
+/* DOM updates */
+#layout {
+  padding: 1rem 2rem;
+  max-inline-size: 65ch;
+  margin-inline: auto;
+}
+
+html[data-display="large"] #layout {
+  padding: 1rem;
+  max-inline-size: 90ch;
+  justify-content: center;
+}
+
+html[data-display="large"] :is(#toggle-dark-theme, #set-lap) {
+  display: none;
+}
+
+html {
+  view-transition-name: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    --transition-duration: 0.35s;
+  }
+
+  #display {
+    view-transition-name: display;
+  }
+
+  #toggle-large-display {
+    view-transition-name: toggle-large-display;
+  }
+
+  #toggle-dark-theme {
+    view-transition-name: toggle-dark-theme;
+  }
+
+  #toggle-start {
+    view-transition-name: toggle-start;
+  }
+
+  #set-lap {
+    view-transition-name: set-lap;
+  }
+
+  #reset {
+    view-transition-name: reset;
+  }
+
+  ::view-transition-group(*) {
+    animation-duration: var(--transition-duration, 0.4s);
+  }
+
+  ::view-transition-old(toggle-dark-theme),
+  ::view-transition-old(set-lap) {
+    display: none;
+  }
+
+  ::view-transition-new(toggle-dark-theme),
+  ::view-transition-new(set-lap) {
+    animation-delay: var(--transition-duration, 0.4s);
+  }
+}
+
+/* aria-pressed API */
 button[aria-pressed="false"] [data-pressed="false"] {
   display: initial;
 }
