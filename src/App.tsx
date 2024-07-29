@@ -1,42 +1,18 @@
-import Icons from "./Icons";
-import "./App.css";
-import { createSignal, onCleanup, onMount } from "solid-js";
+import { Time } from "./types";
+import { Accessor, createSignal, onCleanup, onMount } from "solid-js";
 
-type Time = {
-  hours: number;
-  minutes: number;
-  seconds: number;
-  hundredths: number;
-};
+import "./App.css";
+import Icons from "./Icons";
+import Display from "./Display";
+import { getTimeComponents } from "./utils";
 
 type State = "wait" | "run" | "pause";
-
-const getTimeComponents = (ms: number): Time => {
-  let hours = ms;
-  const hundredths = Math.floor((hours % 1000) / 10);
-  hours = Math.floor(hours / 1000);
-
-  const seconds = hours % 60;
-  hours = Math.floor(hours / 60);
-
-  const minutes = hours % 60;
-  hours = Math.floor(hours / 60);
-
-  return {
-    hours: 0,
-    minutes,
-    seconds,
-    hundredths,
-  };
-};
-
-const padDigit = (n: number): string => n.toString().padStart(2, "0");
 
 function App() {
   const [largeDisplay, setLargeDisplay] = createSignal(false);
   const [darkTheme, setDarkTheme] = createSignal(false);
   const [ms, setMs] = createSignal(0);
-  const time = () => getTimeComponents(ms());
+  const time: Accessor<Time> = () => getTimeComponents(ms());
 
   let lapsed = 0;
   let startMs = 0;
@@ -162,19 +138,7 @@ function App() {
         </button>
       </div>
       <main>
-        {/* prettier-ignore */}
-        <svg id="display" role="heading" aria-level={1} display="block" viewBox="-9.63 -11.795 87.262 17.841">
-          <title>Time</title>
-          <g style="fill: currentColor; font-family: Inter, sans-serif; font-feature-settings: 'tnum';">
-            <text text-anchor="middle"><tspan font-size="16">{padDigit(time().hours)}</tspan><tspan x="0" y="6" font-size="3.5">hr</tspan></text>
-            <text x="10" font-size="16">:</text>
-            <text x="24.508667" text-anchor="middle"><tspan font-size="16">{padDigit(time().minutes)}</tspan><tspan x="24.508667" y="6" font-size="3.5">min</tspan></text>
-            <text x="34.558453" font-size="16">:</text>
-            <text x="49.017334" text-anchor="middle"><tspan font-size="16">{padDigit(time().seconds)}</tspan><tspan x="49.017334" y="6" font-size="3.5">sec</tspan></text>
-            <text x="59.06712" font-size="16">.</text>
-            <text x="70.699295" font-size="11" text-anchor="middle">{padDigit(time().hundredths)}</text>
-          </g>
-        </svg>
+        <Display {...time()} />
       </main>
       <div id="controls">
         <button
