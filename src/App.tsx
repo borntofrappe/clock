@@ -6,8 +6,8 @@ function App() {
   const [largeDisplay, setLargeDisplay] = createSignal(false);
 
   onMount(() => {
-    const mode = document.documentElement.getAttribute("data-mode");
-    if (mode === "display") {
+    const display = document.documentElement.getAttribute("data-display");
+    if (display === "large") {
       setLargeDisplay(true);
     }
   });
@@ -15,9 +15,9 @@ function App() {
   const updateDisplay = () => {
     setLargeDisplay(!largeDisplay());
 
-    const mode = largeDisplay() ? "display" : "default";
-    document.documentElement.setAttribute("data-mode", mode);
-    localStorage.setItem("data-mode", mode);
+    const display = largeDisplay() ? "large" : "normal";
+    document.documentElement.setAttribute("data-display", display);
+    localStorage.setItem("data-display", display);
   };
 
   const toggleLargeDisplay = () => {
@@ -35,7 +35,7 @@ function App() {
       <Icons />
       <div id="preferences">
         <button
-          id="toggle-display"
+          id="toggle-large-display"
           onClick={toggleLargeDisplay}
           aria-label="Toggle large display"
           aria-pressed={largeDisplay()}

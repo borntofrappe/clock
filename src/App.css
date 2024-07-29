@@ -70,13 +70,13 @@
 }
 
 /* DOM update */
-html[data-mode="display"] #layout {
+html[data-display="large"] #layout {
   padding: 1rem;
   max-inline-size: 90ch;
   justify-content: center;
 }
 
-html[data-mode="display"] :is(#toggle-theme, #set-lap) {
+html[data-display="large"] :is(#toggle-theme, #set-lap) {
   display: none;
 }
 
@@ -93,8 +93,8 @@ html {
     view-transition-name: display;
   }
 
-  #toggle-display {
-    view-transition-name: toggle-display;
+  #toggle-large-display {
+    view-transition-name: toggle-large-display;
   }
 
   #toggle-theme {
