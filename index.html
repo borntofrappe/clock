@@ -22,6 +22,11 @@
         font-family: Inter, system-ui;
       }
     </style>
+
+    <script>
+      const mode = localStorage.getItem("data-mode");
+      document.documentElement.setAttribute("data-mode", mode);
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -12,6 +12,9 @@ importers:
         specifier: ^1.8.18
         version: 1.8.19
     devDependencies:
+      '@types/dom-view-transitions':
+        specifier: ^1.0.5
+        version: 1.0.5
       typescript:
         specifier: ^5.2.2
         version: 5.5.4
@@ -360,6 +363,9 @@ packages:
 
   '@types/babel__traverse@7.20.6':
     resolution: {integrity: sha512-r1bzfrm0tomOI8g1SzvCaQHo6Lcv6zu0EA+W2kHrt8dyrHQxGzBBL4kdkzIS+jBMV+EYcMAEAqXqYaLJq5rOZg==}
+
+  '@types/dom-view-transitions@1.0.5':
+    resolution: {integrity: sha512-N2sILR7fxSMnaFaAPwGj4DtHCXjIyQTHt+xJyf9jATpzUsTkMNM0DWtqZB6W7f501B/Y0tq3uqat/VlbjuTpMA==}
 
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
@@ -875,6 +881,8 @@ snapshots:
   '@types/babel__traverse@7.20.6':
     dependencies:
       '@babel/types': 7.25.0
+
+  '@types/dom-view-transitions@1.0.5': {}
 
   '@types/estree@1.0.5': {}
 

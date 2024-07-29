@@ -12,6 +12,7 @@
     "solid-js": "^1.8.18"
   },
   "devDependencies": {
+    "@types/dom-view-transitions": "^1.0.5",
     "typescript": "^5.2.2",
     "vite": "^5.3.4",
     "vite-plugin-solid": "^2.10.2"

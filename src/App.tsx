@@ -1,31 +1,80 @@
 import Icons from "./Icons";
-import './App.css'
+import "./App.css";
+import { createSignal, onMount } from "solid-js";
 
 function App() {
+  const [largeDisplay, setLargeDisplay] = createSignal(false);
+
+  onMount(() => {
+    const mode = document.documentElement.getAttribute("data-mode");
+    if (mode === "display") {
+      setLargeDisplay(true);
+    }
+  });
+
+  const updateDisplay = () => {
+    setLargeDisplay(!largeDisplay());
+
+    const mode = largeDisplay() ? "display" : "default";
+    document.documentElement.setAttribute("data-mode", mode);
+    localStorage.setItem("data-mode", mode);
+  };
+
+  const toggleLargeDisplay = () => {
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        updateDisplay();
+      });
+    } else {
+      updateDisplay();
+    }
+  };
+
   return (
-    <div class="layout">
+    <div id="layout">
       <Icons />
-      <div class="preferences">
-        <button aria-label="Toggle large display" aria-pressed="false">
+      <div id="preferences">
+        <button
+          id="toggle-display"
+          onClick={toggleLargeDisplay}
+          aria-label="Toggle large display"
+          aria-pressed={largeDisplay()}
+        >
           <svg data-pressed="false" width="1em" height="1em" viewBox="0 0 1 1">
             <use href="#icon-expand" width="1" height="1" />
           </svg>
-          <svg data-pressed="true" display="none" width="1em" height="1em" viewBox="0 0 1 1">
+          <svg
+            data-pressed="true"
+            display="none"
+            width="1em"
+            height="1em"
+            viewBox="0 0 1 1"
+          >
             <use href="#icon-reduce" width="1" height="1" />
           </svg>
         </button>
-        <button aria-label="Toggle dark theme" aria-pressed="false">
+        <button
+          id="toggle-theme"
+          aria-label="Toggle dark theme"
+          aria-pressed="false"
+        >
           <svg width="1em" height="1em" viewBox="0 0 1 1">
             <use href="#icon-sun" width="1" height="1" />
           </svg>
-          <svg data-pressed="true" display="none" width="1em" height="1em" viewBox="0 0 1 1">
+          <svg
+            data-pressed="true"
+            display="none"
+            width="1em"
+            height="1em"
+            viewBox="0 0 1 1"
+          >
             <use href="#icon-moon" width="1" height="1" />
           </svg>
         </button>
       </div>
       <main>
         {/* prettier-ignore */}
-        <svg class="display" role="heading" aria-level={1} display="block" viewBox="-9.63 -11.795 87.262 17.841">
+        <svg id="display" role="heading" aria-level={1} display="block" viewBox="-9.63 -11.795 87.262 17.841">
           <title>Time</title>
           <g style="fill: currentColor; font-family: Inter, sans-serif;">
             <text text-anchor="middle"><tspan font-size="16">00</tspan><tspan x="0" y="6" font-size="3.5">hr</tspan></text>
@@ -38,21 +87,31 @@ function App() {
           </g>
         </svg>
       </main>
-      <div class="controls">
-        <button aria-label="Toggle stopwatch" aria-pressed="false">
+      <div id="controls">
+        <button
+          id="toggle-start"
+          aria-label="Toggle stopwatch"
+          aria-pressed="false"
+        >
           <svg data-pressed="false" width="1em" height="1em" viewBox="0 0 1 1">
             <use href="#icon-start" width="1" height="1" />
           </svg>
-          <svg data-pressed="true" display="none" width="1em" height="1em" viewBox="0 0 1 1">
+          <svg
+            data-pressed="true"
+            display="none"
+            width="1em"
+            height="1em"
+            viewBox="0 0 1 1"
+          >
             <use href="#icon-pause" width="1" height="1" />
           </svg>
         </button>
-        <button aria-label="Set laps" id="set-lap">
+        <button id="set-lap" aria-label="Set lap">
           <svg width="1em" height="1em" viewBox="0 0 1 1">
             <use href="#icon-flag" width="1" height="1" />
           </svg>
         </button>
-        <button aria-label="Reset stopwatch">
+        <button id="reset" aria-label="Reset stopwatch">
           <svg width="1em" height="1em" viewBox="0 0 1 1">
             <use href="#icon-reset" width="1" height="1" />
           </svg>
