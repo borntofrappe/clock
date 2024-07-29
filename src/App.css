@@ -76,7 +76,7 @@ html[data-display="large"] #layout {
   justify-content: center;
 }
 
-html[data-display="large"] :is(#toggle-theme, #set-lap) {
+html[data-display="large"] :is(#toggle-dark-theme, #set-lap) {
   display: none;
 }
 
@@ -97,8 +97,8 @@ html {
     view-transition-name: toggle-large-display;
   }
 
-  #toggle-theme {
-    view-transition-name: toggle-theme;
+  #toggle-dark-theme {
+    view-transition-name: toggle-dark-theme;
   }
 
   #toggle-start {
@@ -117,12 +117,12 @@ html {
     animation-duration: var(--transition-duration, 0.4s);
   }
 
-  ::view-transition-old(toggle-theme),
+  ::view-transition-old(toggle-dark-theme),
   ::view-transition-old(set-lap) {
     display: none;
   }
 
-  ::view-transition-new(toggle-theme),
+  ::view-transition-new(toggle-dark-theme),
   ::view-transition-new(set-lap) {
     animation-delay: var(--transition-duration, 0.4s);
   }

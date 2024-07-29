@@ -4,11 +4,16 @@ import { createSignal, onMount } from "solid-js";
 
 function App() {
   const [largeDisplay, setLargeDisplay] = createSignal(false);
+  const [darkTheme, setDarkTheme] = createSignal(false);
 
   onMount(() => {
     const display = document.documentElement.getAttribute("data-display");
+    const theme = document.documentElement.getAttribute("data-theme");
     if (display === "large") {
       setLargeDisplay(true);
+    }
+    if (theme === "dark") {
+      setDarkTheme(true);
     }
   });
 
@@ -28,6 +33,14 @@ function App() {
     } else {
       updateDisplay();
     }
+  };
+
+  const toggleDarkTheme = () => {
+    setDarkTheme(!darkTheme());
+
+    const theme = darkTheme() ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("data-theme", theme);
   };
 
   return (
@@ -54,11 +67,12 @@ function App() {
           </svg>
         </button>
         <button
-          id="toggle-theme"
+          id="toggle-dark-theme"
+          onClick={toggleDarkTheme}
           aria-label="Toggle dark theme"
-          aria-pressed="false"
+          aria-pressed={darkTheme()}
         >
-          <svg width="1em" height="1em" viewBox="0 0 1 1">
+          <svg data-pressed="false" width="1em" height="1em" viewBox="0 0 1 1">
             <use href="#icon-sun" width="1" height="1" />
           </svg>
           <svg

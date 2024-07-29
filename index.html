@@ -25,7 +25,10 @@
 
     <script>
       const display = localStorage.getItem("data-display");
+      const theme = localStorage.getItem("data-theme");
+      
       document.documentElement.setAttribute("data-display", display);
+      document.documentElement.setAttribute("data-theme", theme);
     </script>
   </head>
   <body>

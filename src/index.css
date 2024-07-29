@@ -11,6 +11,14 @@ body {
   min-block-size: 100svb;
 }
 
+body > * {
+  background: inherit;
+}
+
+html[data-theme="dark"] body {
+  filter: invert();
+}
+
 button[aria-pressed="false"] [data-pressed="false"] {
   display: initial;
 }
