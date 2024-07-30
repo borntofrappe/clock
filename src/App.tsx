@@ -61,7 +61,10 @@ function App() {
       <div id="preferences">
         <Preferences />
       </div>
-      <main id="display">
+      <main
+        style={{ color: state() === "run" ? "currentcolor" : "var(--color-dim, currentColor)" }}
+        id="display"
+      >
         <Display {...time()} />
       </main>
       <div id="controls">
