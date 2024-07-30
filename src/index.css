@@ -88,6 +88,10 @@
 }
 
 /* global */
+* {
+  box-sizing: border-box;
+}
+
 body {
   color: var(--color);
   background: var(--background);
