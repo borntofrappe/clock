@@ -66,6 +66,7 @@ function App() {
       </main>
       <div id="controls">
         <button
+          data-role="primary"
           id="toggle-start"
           onClick={toggleStart}
           aria-pressed={state() === "run"}
