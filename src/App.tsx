@@ -61,35 +61,35 @@ function App() {
       <div id="preferences">
         <Preferences />
       </div>
-      <main>
+      <main id="display">
         <Display {...time()} />
       </main>
       <div id="controls">
         <button
           id="toggle-start"
           onClick={toggleStart}
-          aria-label="Toggle stopwatch"
           aria-pressed={state() === "run"}
         >
+          <span class="visually-hidden">Toggle stopwatch</span>
+          {/* prettier-ignore */}
           <svg data-pressed="false" width="1em" height="1em" viewBox="0 0 1 1">
             <use href="#icon-start" width="1" height="1" />
           </svg>
-          <svg
-            data-pressed="true"
-            display="none"
-            width="1em"
-            height="1em"
-            viewBox="0 0 1 1"
-          >
+          {/* prettier-ignore */}
+          <svg data-pressed="true" display="none" width="1em" height="1em" viewBox="0 0 1 1">
             <use href="#icon-pause" width="1" height="1" />
           </svg>
         </button>
-        <button id="set-lap" aria-label="Set lap">
+        <button id="set-lap">
+          <span class="visually-hidden">Set lap</span>
+          {/* prettier-ignore */}
           <svg width="1em" height="1em" viewBox="0 0 1 1">
             <use href="#icon-flag" width="1" height="1" />
           </svg>
         </button>
-        <button id="reset" onClick={reset} aria-label="Reset stopwatch">
+        <button id="reset" onClick={reset}>
+          <span class="visually-hidden">Reset stopwatch</span>
+          {/* prettier-ignore */}
           <svg width="1em" height="1em" viewBox="0 0 1 1">
             <use href="#icon-reset" width="1" height="1" />
           </svg>

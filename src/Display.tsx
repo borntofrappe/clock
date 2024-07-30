@@ -4,7 +4,7 @@ import { padDigit } from "./lib/utils";
 
 function Display(props: Time) {
   // prettier-ignore
-  return <svg id="display" role="heading" aria-level={1} display="block" viewBox="-9.63 -11.795 87.262 17.841">
+  return <svg role="heading" aria-level={1} display="block" viewBox="-9.63 -11.795 87.262 17.841">
     <title>Time</title>
     <g style="fill: currentColor; font-family: Inter, sans-serif; font-feature-settings: 'tnum';">
       <text text-anchor="middle"><tspan font-size="16">{padDigit(props.hours)}</tspan><tspan x="0" y="6" font-size="3.5">hr</tspan></text>

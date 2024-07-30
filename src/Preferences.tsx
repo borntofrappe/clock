@@ -46,38 +46,30 @@ function Preferences() {
       <button
         id="toggle-large-display"
         onClick={toggleLargeDisplay}
-        aria-label="Toggle large display"
         aria-pressed={largeDisplay()}
       >
+        <span class="visually-hidden">Toggle large display</span>
+        {/* prettier-ignore */}
         <svg data-pressed="false" width="1em" height="1em" viewBox="0 0 1 1">
           <use href="#icon-expand" width="1" height="1" />
         </svg>
-        <svg
-          data-pressed="true"
-          display="none"
-          width="1em"
-          height="1em"
-          viewBox="0 0 1 1"
-        >
+        {/* prettier-ignore */}
+        <svg data-pressed="true" display="none" width="1em" height="1em" viewBox="0 0 1 1">
           <use href="#icon-reduce" width="1" height="1" />
         </svg>
       </button>
       <button
         id="toggle-dark-theme"
         onClick={toggleDarkTheme}
-        aria-label="Toggle dark theme"
         aria-pressed={darkTheme()}
       >
+        <span class="visually-hidden">Toggle dark theme</span>
+        {/* prettier-ignore */}
         <svg data-pressed="false" width="1em" height="1em" viewBox="0 0 1 1">
           <use href="#icon-sun" width="1" height="1" />
         </svg>
-        <svg
-          data-pressed="true"
-          display="none"
-          width="1em"
-          height="1em"
-          viewBox="0 0 1 1"
-        >
+        {/* prettier-ignore */}
+        <svg data-pressed="true" display="none" width="1em" height="1em" viewBox="0 0 1 1">
           <use href="#icon-moon" width="1" height="1" />
         </svg>
       </button>

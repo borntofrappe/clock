@@ -1,4 +1,5 @@
 function Icons() {
+  // prettier-ignore
   return <svg display="none">
   <defs>
     <symbol id="icon-expand" viewBox="-10 -10 20 20">
