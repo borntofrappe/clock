@@ -1,16 +1,15 @@
 import { Time } from "./types";
-import { Accessor, createSignal, onCleanup, onMount } from "solid-js";
+import { Accessor, createSignal, onCleanup } from "solid-js";
 
 import "./App.css";
 import Icons from "./Icons";
+import Preferences from "./Preferences";
 import Display from "./Display";
 import { getTimeComponents } from "./utils";
 
 type State = "wait" | "run" | "pause";
 
 function App() {
-  const [largeDisplay, setLargeDisplay] = createSignal(false);
-  const [darkTheme, setDarkTheme] = createSignal(false);
   const [ms, setMs] = createSignal(0);
   const time: Accessor<Time> = () => getTimeComponents(ms());
 
@@ -19,46 +18,9 @@ function App() {
   let [state, setState] = createSignal<State>("wait");
   let interval: number;
 
-  onMount(() => {
-    const display = document.documentElement.getAttribute("data-display");
-    const theme = document.documentElement.getAttribute("data-theme");
-    if (display === "large") {
-      setLargeDisplay(true);
-    }
-    if (theme === "dark") {
-      setDarkTheme(true);
-    }
-  });
-
   onCleanup(() => {
     clearInterval(interval);
   });
-
-  const updateDisplay = () => {
-    setLargeDisplay(!largeDisplay());
-
-    const display = largeDisplay() ? "large" : "normal";
-    document.documentElement.setAttribute("data-display", display);
-    localStorage.setItem("data-display", display);
-  };
-
-  const toggleLargeDisplay = () => {
-    if (document.startViewTransition) {
-      document.startViewTransition(() => {
-        updateDisplay();
-      });
-    } else {
-      updateDisplay();
-    }
-  };
-
-  const toggleDarkTheme = () => {
-    setDarkTheme(!darkTheme());
-
-    const theme = darkTheme() ? "dark" : "light";
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("data-theme", theme);
-  };
 
   const start = () => {
     startMs = new Date().getTime();
@@ -98,44 +60,7 @@ function App() {
     <div id="layout">
       <Icons />
       <div id="preferences">
-        <button
-          id="toggle-large-display"
-          onClick={toggleLargeDisplay}
-          aria-label="Toggle large display"
-          aria-pressed={largeDisplay()}
-        >
-          <svg data-pressed="false" width="1em" height="1em" viewBox="0 0 1 1">
-            <use href="#icon-expand" width="1" height="1" />
-          </svg>
-          <svg
-            data-pressed="true"
-            display="none"
-            width="1em"
-            height="1em"
-            viewBox="0 0 1 1"
-          >
-            <use href="#icon-reduce" width="1" height="1" />
-          </svg>
-        </button>
-        <button
-          id="toggle-dark-theme"
-          onClick={toggleDarkTheme}
-          aria-label="Toggle dark theme"
-          aria-pressed={darkTheme()}
-        >
-          <svg data-pressed="false" width="1em" height="1em" viewBox="0 0 1 1">
-            <use href="#icon-sun" width="1" height="1" />
-          </svg>
-          <svg
-            data-pressed="true"
-            display="none"
-            width="1em"
-            height="1em"
-            viewBox="0 0 1 1"
-          >
-            <use href="#icon-moon" width="1" height="1" />
-          </svg>
-        </button>
+        <Preferences />
       </div>
       <main>
         <Display {...time()} />
