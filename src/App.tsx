@@ -1,11 +1,10 @@
 import { Time } from "./types";
 import { Accessor, createSignal, onCleanup } from "solid-js";
 
-import "./App.css";
 import Icons from "./Icons";
 import Preferences from "./Preferences";
 import Display from "./Display";
-import { getTimeComponents } from "./utils";
+import { getTimeComponents } from "./lib/utils";
 
 type State = "wait" | "run" | "pause";
 

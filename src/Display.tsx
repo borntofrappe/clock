@@ -1,6 +1,6 @@
 import { Time } from "./types";
 
-import { padDigit } from "./utils";
+import { padDigit } from "./lib/utils";
 
 function Display(props: Time) {
   // prettier-ignore
