@@ -5,9 +5,11 @@ export type Time = {
   hundredths: number;
 };
 
+export type Addendum = "Fastest" | "Slowest";
+
 export type Lap = {
   number: number;
-  addendum?: "Fastest" | "Slowest";
+  addendum?: Addendum;
   msCurrent: number;
-  mstotal: number;
+  msTotal: number;
 };

@@ -1,9 +1,9 @@
 import { Lap } from "./types";
 
-import { For } from "solid-js";
+import { Index } from "solid-js";
 import { formatLapMs } from "./lib/utils";
 
-import styles from './Laps.module.css'
+import styles from "./Laps.module.css";
 
 function Laps(props: { laps: Lap[] }) {
   return (
@@ -16,22 +16,22 @@ function Laps(props: { laps: Lap[] }) {
         </tr>
       </thead>
       <tbody>
-        <For each={props.laps}>
+        <Index each={props.laps}>
           {(lap) => (
             <tr>
               <td>
-                {lap.number}
-                {lap.addendum ? <span> &nbsp;{lap.addendum}</span> : ""}
+                {lap().number}
+                {lap().addendum ? <span> &nbsp;{lap().addendum}</span> : ""}
               </td>
               <td>
-                <time>{formatLapMs(lap.msCurrent)}</time>
+                <time>{formatLapMs(lap().msCurrent)}</time>
               </td>
               <td>
-                <time>{formatLapMs(lap.mstotal)}</time>
+                <time>{formatLapMs(lap().msTotal)}</time>
               </td>
             </tr>
           )}
-        </For>
+        </Index>
       </tbody>
     </table>
   );

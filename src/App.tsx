@@ -1,4 +1,4 @@
-import { Time, Lap } from "./types";
+import { Time, Lap, Addendum } from "./types";
 import { Accessor, createSignal, onCleanup } from "solid-js";
 
 import Icons from "./Icons";
@@ -13,20 +13,6 @@ function App() {
   const [ms, setMs] = createSignal(0);
   const time: Accessor<Time> = () => getTimeComponents(ms());
   const [laps, setLaps] = createSignal<Lap[]>([]);
-  setLaps([
-    {
-      number: 2,
-      addendum: "Slowest",
-      msCurrent: 989,
-      mstotal: 1525,
-    },
-    {
-      number: 1,
-      addendum: "Fastest",
-      msCurrent: 536,
-      mstotal: 536,
-    },
-  ]);
 
   let lapsed = 0;
   let startMs = 0;
@@ -69,6 +55,59 @@ function App() {
     if (state() === "wait") return;
     stop();
     setState("wait");
+    setLaps([]);
+  };
+
+  const setLap = () => {
+    const msTotal = ms();
+    if (state() !== "run") return;
+
+    let lap: Lap;
+    const previousLaps = laps();
+    const { length } = previousLaps;
+
+    if (length === 0) {
+      lap = {
+        number: length + 1,
+        msCurrent: msTotal,
+        msTotal,
+      };
+    } else {
+      const msCurrent: number = msTotal - previousLaps[0].msTotal;
+
+      lap = {
+        number: length + 1,
+        msCurrent,
+        msTotal,
+      };
+
+      if (length === 1) {
+        const addendums: Addendum[] = ["Fastest", "Slowest"];
+        if (msCurrent > previousLaps[0].msCurrent) {
+          addendums.reverse();
+        }
+
+        lap.addendum = addendums[0];
+        previousLaps[0].addendum = addendums[1];
+      } else {
+        const slowestIndex = previousLaps.findIndex(
+          (d) => d.addendum === "Slowest"
+        );
+        const fastestIndex = previousLaps.findIndex(
+          (d) => d.addendum === "Fastest"
+        );
+
+        if (msCurrent < previousLaps[fastestIndex].msCurrent) {
+          lap.addendum = "Fastest";
+          delete previousLaps[fastestIndex].addendum;
+        } else if (msCurrent > previousLaps[slowestIndex].msCurrent) {
+          lap.addendum = "Slowest";
+          delete previousLaps[slowestIndex].addendum;
+        }
+      }
+    }
+
+    setLaps([lap, ...previousLaps]);
   };
 
   return (
@@ -105,7 +144,7 @@ function App() {
             <use href="#icon-pause" width="1" height="1" />
           </svg>
         </button>
-        <button id="set-lap">
+        <button id="set-lap" onClick={setLap}>
           <span class="visually-hidden">Set lap</span>
           {/* prettier-ignore */}
           <svg width="1em" height="1em" viewBox="0 0 1 1">
