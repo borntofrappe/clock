@@ -1,0 +1,23 @@
+.laps {
+  font-size: 0.85em;
+  table-layout: fixed;
+  inline-size: 100%;
+  border-collapse: collapse;
+}
+
+.laps:has(tbody:empty) {
+  display: none;
+}
+
+.laps th {
+  text-align: start;
+  font-weight: 600;
+  padding-block: 1rem;
+  border-block-end: 1px solid var(--color-dim, currentColor);
+  border-block-end-color: color(from var(--color-dim) srgb r g b / 0.3);
+}
+
+.laps td {
+  padding-block: 0.75rem;
+  font-feature-settings: "tnum";
+}

@@ -165,7 +165,7 @@ html[data-display="large"] #layout {
   justify-content: center;
 }
 
-html[data-display="large"] :is(#toggle-dark-theme, #set-lap) {
+html[data-display="large"] :is(#toggle-dark-theme, #set-lap, #laps) {
   display: none;
 }
 
@@ -202,17 +202,23 @@ html {
     view-transition-name: reset;
   }
 
+  #laps {
+    view-transition-name: laps;
+  }
+
   ::view-transition-group(*) {
     animation-duration: var(--transition-duration, 0.25s);
   }
 
   ::view-transition-old(toggle-dark-theme),
-  ::view-transition-old(set-lap) {
+  ::view-transition-old(set-lap),
+  ::view-transition-old(laps) {
     display: none;
   }
 
   ::view-transition-new(toggle-dark-theme),
-  ::view-transition-new(set-lap) {
+  ::view-transition-new(set-lap),
+  ::view-transition-new(laps) {
     animation-delay: var(--transition-duration, 0.25s);
   }
 }

@@ -3,9 +3,11 @@ import { Lap } from "./types";
 import { For } from "solid-js";
 import { formatLapMs } from "./lib/utils";
 
+import styles from './Laps.module.css'
+
 function Laps(props: { laps: Lap[] }) {
   return (
-    <table>
+    <table class={styles.laps}>
       <thead>
         <tr>
           <th>Laps</th>
