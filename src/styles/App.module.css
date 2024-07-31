@@ -1,0 +1,33 @@
+.layout > * + * {
+  margin-block-start: 0.75rem;
+}
+
+.layout .controls {
+  margin-block-start: 1.75rem;
+}
+
+.layout .preferences {
+  inline-size: max-content;
+  margin-inline-start: auto;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.preferences {
+  --button-size: 2.2rem;
+  --button-padding: 0.6rem;
+  --button-border-radius: 0.5rem;
+  --button-background: none;
+}
+
+.controls {
+  --button-size: 3rem;
+  --button-padding: 1rem;
+  --button-border-radius: 1e5px;
+  --button-box-shadow: 0 0 0.15rem -0.05rem currentColor,
+    0 0 0.5rem -0.4rem currentColor;
+}

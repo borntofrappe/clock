@@ -6,6 +6,7 @@ import Preferences from "./Preferences";
 import Display from "./Display";
 import Laps from "./Laps";
 import { getTimeComponents } from "./lib/utils";
+import styles from "./styles/App.module.css"
 
 type State = "wait" | "run" | "pause";
 
@@ -111,9 +112,9 @@ function App() {
   };
 
   return (
-    <div id="layout">
+    <div id="layout" class={styles.layout}>
       <Icons />
-      <div id="preferences">
+      <div id="preferences" class={styles.preferences}>
         <Preferences />
       </div>
       <main
@@ -127,7 +128,7 @@ function App() {
       >
         <Display {...time()} />
       </main>
-      <div id="controls">
+      <div id="controls" class={styles.controls}>
         <button
           data-role="primary"
           id="toggle-start"
@@ -144,14 +145,14 @@ function App() {
             <use href="#icon-pause" width="1" height="1" />
           </svg>
         </button>
-        <button id="set-lap" disabled={state() !== 'run'} onClick={setLap}>
+        <button id="set-lap" disabled={state() !== "run"} onClick={setLap}>
           <span class="visually-hidden">Set lap</span>
           {/* prettier-ignore */}
           <svg width="1em" height="1em" viewBox="0 0 1 1">
             <use href="#icon-flag" width="1" height="1" />
           </svg>
         </button>
-        <button id="reset" disabled={state() === 'wait'} onClick={reset}>
+        <button id="reset" disabled={state() === "wait"} onClick={reset}>
           <span class="visually-hidden">Reset stopwatch</span>
           {/* prettier-ignore */}
           <svg width="1em" height="1em" viewBox="0 0 1 1">

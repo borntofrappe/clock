@@ -41,6 +41,7 @@
   --button-outline-color-primary-dark: var(--button-background-primary-dark);
 }
 
+/* global */
 :root {
   color-scheme: light;
   --color: var(--color-light);
@@ -69,7 +70,7 @@
 }
 
 [data-theme="dark"] {
-  color-scheme: light;
+  color-scheme: dark;
   --color: var(--color-dark);
   --color-dim: var(--color-dim-dark);
   --background: var(--background-dark);
@@ -95,7 +96,6 @@
   --button-outline-color-primary: var(--button-outline-color-primary-dark);
 }
 
-/* global */
 * {
   box-sizing: border-box;
 }
@@ -170,6 +170,9 @@ button[data-role="primary"] {
   padding: 1rem 2rem;
   max-inline-size: 65ch;
   margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100svb;
 }
 
 html[data-display="large"] #layout {
@@ -251,46 +254,4 @@ button[aria-pressed="true"] [data-pressed="false"] {
 
 button[aria-pressed="true"] [data-pressed="true"] {
   display: initial;
-}
-
-/* layout */
-#layout {
-  display: flex;
-  flex-direction: column;
-  min-block-size: 100svb;
-}
-
-#layout > * + * {
-  margin-block-start: 0.75rem;
-}
-
-#layout #controls {
-  margin-block-start: 1.75rem;
-}
-
-#preferences {
-  inline-size: max-content;
-  margin-inline-start: auto;
-}
-
-#controls {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-/* style */
-#preferences {
-  --button-size: 2.2rem;
-  --button-padding: 0.6rem;
-  --button-border-radius: 0.5rem;
-  --button-background: none;
-}
-
-#controls {
-  --button-size: 3rem;
-  --button-padding: 1rem;
-  --button-border-radius: 1e5px;
-  --button-box-shadow: 0 0 0.15rem -0.05rem currentColor,
-    0 0 0.5rem -0.4rem currentColor;
 }
