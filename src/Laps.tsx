@@ -1,8 +1,7 @@
-import { Lap } from "./types";
-
 import { Index } from "solid-js";
-import { formatLapMs } from "./lib/utils";
 
+import { Lap } from "./lib/types";
+import { formatLapMs } from "./lib/utils";
 import styles from "./styles/Laps.module.css";
 
 function Laps(props: { laps: Lap[] }) {

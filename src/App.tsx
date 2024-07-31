@@ -1,12 +1,14 @@
-import { Time, Lap, Addendum } from "./types";
-import { Accessor, createSignal, onCleanup } from "solid-js";
+import { createSignal, onCleanup } from "solid-js";
+import { Accessor } from "solid-js";
+
+import { Time, Lap, Addendum } from "./lib/types";
+import { getTimeComponents } from "./lib/utils";
+import styles from "./styles/App.module.css";
 
 import Icons from "./Icons";
 import Preferences from "./Preferences";
 import Display from "./Display";
 import Laps from "./Laps";
-import { getTimeComponents } from "./lib/utils";
-import styles from "./styles/App.module.css"
 
 type State = "wait" | "run" | "pause";
 

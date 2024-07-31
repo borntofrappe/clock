@@ -1,4 +1,4 @@
-import { Time } from "../types";
+import { Time } from "./types";
 
 export const getTimeComponents = (ms: number): Time => {
   let hours = ms;

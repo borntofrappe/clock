@@ -1,5 +1,4 @@
-import { Time } from "./types";
-
+import { Time } from "./lib/types";
 import { padDigit } from "./lib/utils";
 
 function Display(props: Time) {
