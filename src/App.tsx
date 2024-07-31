@@ -144,14 +144,14 @@ function App() {
             <use href="#icon-pause" width="1" height="1" />
           </svg>
         </button>
-        <button id="set-lap" onClick={setLap}>
+        <button id="set-lap" disabled={state() !== 'run'} onClick={setLap}>
           <span class="visually-hidden">Set lap</span>
           {/* prettier-ignore */}
           <svg width="1em" height="1em" viewBox="0 0 1 1">
             <use href="#icon-flag" width="1" height="1" />
           </svg>
         </button>
-        <button id="reset" onClick={reset}>
+        <button id="reset" disabled={state() === 'wait'} onClick={reset}>
           <span class="visually-hidden">Reset stopwatch</span>
           {/* prettier-ignore */}
           <svg width="1em" height="1em" viewBox="0 0 1 1">
