@@ -1,9 +1,10 @@
-import { Time } from "./types";
+import { Time, Lap } from "./types";
 import { Accessor, createSignal, onCleanup } from "solid-js";
 
 import Icons from "./Icons";
 import Preferences from "./Preferences";
 import Display from "./Display";
+import Laps from "./Laps";
 import { getTimeComponents } from "./lib/utils";
 
 type State = "wait" | "run" | "pause";
@@ -11,6 +12,21 @@ type State = "wait" | "run" | "pause";
 function App() {
   const [ms, setMs] = createSignal(0);
   const time: Accessor<Time> = () => getTimeComponents(ms());
+  const [laps, setLaps] = createSignal<Lap[]>([]);
+  setLaps([
+    {
+      number: 2,
+      addendum: "Slowest",
+      msCurrent: 989,
+      mstotal: 1525,
+    },
+    {
+      number: 1,
+      addendum: "Fastest",
+      msCurrent: 536,
+      mstotal: 536,
+    },
+  ]);
 
   let lapsed = 0;
   let startMs = 0;
@@ -62,7 +78,12 @@ function App() {
         <Preferences />
       </div>
       <main
-        style={{ color: state() === "run" ? "currentcolor" : "var(--color-dim, currentColor)" }}
+        style={{
+          color:
+            state() === "run"
+              ? "currentcolor"
+              : "var(--color-dim, currentColor)",
+        }}
         id="display"
       >
         <Display {...time()} />
@@ -98,6 +119,9 @@ function App() {
             <use href="#icon-reset" width="1" height="1" />
           </svg>
         </button>
+      </div>
+      <div id="laps">
+        <Laps laps={laps()} />
       </div>
     </div>
   );

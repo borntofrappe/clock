@@ -4,3 +4,10 @@ export type Time = {
   seconds: number;
   hundredths: number;
 };
+
+export type Lap = {
+  number: number;
+  addendum?: "Fastest" | "Slowest";
+  msCurrent: number;
+  mstotal: number;
+};
