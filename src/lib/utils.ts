@@ -20,3 +20,9 @@ export const getTimeComponents = (ms: number): Time => {
 };
 
 export const padDigit = (n: number): string => n.toString().padStart(2, "0");
+
+export const formatLapMs = (ms: number): string => {
+  const { hours, minutes, seconds, hundredths } = getTimeComponents(ms);
+  // prettier-ignore
+  return `${padDigit(hours)}:${padDigit(minutes)}:${padDigit(seconds)}.${padDigit(hundredths)}`;
+};
