@@ -1,5 +1,6 @@
 import type { Plugin } from "vite";
 import { createHash } from "crypto";
+import { posix } from "path";
 
 export default function ViteServiceWorker({
   importPrefix = "service-worker:",
@@ -31,10 +32,15 @@ export default function ViteServiceWorker({
       const serviceWorkerChunk = bundle[output];
 
       const cacheChunks = Object.values(bundle).filter(
-        (d) => d !== serviceWorkerChunk
+        (item) => item !== serviceWorkerChunk
       );
 
-      const cacheURLs = [...include, ...cacheChunks.map((d) => d.fileName)];
+      const cacheURLs = [
+        ...include,
+        ...cacheChunks.map((item) =>
+          posix.relative(posix.dirname(output), item.fileName)
+        ),
+      ];
       const ASSETS = JSON.stringify(cacheURLs);
 
       const versionHash = createHash("sha1");
