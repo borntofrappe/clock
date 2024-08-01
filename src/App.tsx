@@ -23,25 +23,25 @@ function App() {
   let interval: number;
 
   onCleanup(() => {
-    clearInterval(interval);
+    window.clearInterval(interval);
   });
 
   const start = () => {
     startMs = new Date().getTime();
-    interval = setInterval(() => {
+    interval = window.setInterval(() => {
       setMs(new Date().getTime() - startMs + lapsed);
     });
   };
 
   const pause = () => {
     lapsed = ms();
-    clearInterval(interval);
+    window.clearInterval(interval);
   };
 
   const stop = () => {
     lapsed = 0;
     setMs(0);
-    clearInterval(interval);
+    window.clearInterval(interval);
   };
 
   const toggleStart = () => {
