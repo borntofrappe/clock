@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Plugin } from "vite";
 import { createHash } from "crypto";
 
@@ -40,10 +39,12 @@ export default function ViteServiceWorker({
 
       const versionHash = createHash("sha1");
       for (const item of cacheChunks) {
+        // @ts-ignore
         versionHash.update(item.code || item.source);
       }
       const VERSION = JSON.stringify(versionHash.digest("hex"));
 
+      // @ts-ignore
       serviceWorkerChunk.code = `const VERSION = ${VERSION};const ASSETS = ${ASSETS};${serviceWorkerChunk.code}`;
     },
   };
