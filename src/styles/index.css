@@ -20,6 +20,7 @@
   --button-color-active-primary: hsl(182 30% 82%);
   --button-background-active-primary: hsl(182 47% 38%);
   --button-outline-color-primary: var(--button-background-primary);
+  --scrollbar-color: hsl(0 0% 54%) transparent;
 }
 
 [data-theme="dark"] {
@@ -43,6 +44,7 @@
   --button-color-active-primary: hsl(181 72% 24%);
   --button-background-active-primary: hsl(181 72% 47%);
   --button-outline-color-primary: var(--button-background-primary);
+  --scrollbar-color: hsl(0 0% 62%) transparent;
 }
 
 * {

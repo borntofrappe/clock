@@ -162,7 +162,7 @@ function App() {
           </svg>
         </button>
       </div>
-      <div id="laps">
+      <div id="laps" class={styles.laps}>
         <Laps laps={laps()} />
       </div>
     </div>
