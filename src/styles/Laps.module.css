@@ -1,5 +1,5 @@
 .laps {
-  font-size: 0.85em;
+  font-size: var(--font-size-small, 0.9em);
   table-layout: fixed;
   inline-size: 100%;
   border-collapse: collapse;
@@ -11,13 +11,15 @@
 
 .laps th {
   text-align: start;
-  font-weight: 600;
-  padding-block: 1rem;
+  font-weight: var(--font-weight-bold, 600);
   border-block-end: 1px solid var(--color-dim, currentColor);
   border-block-end-color: color(from var(--color-dim) srgb r g b / 0.3);
 }
 
 .laps td {
-  padding-block: 0.75rem;
   font-feature-settings: "tnum";
+}
+
+.laps :is(th, td) {
+  padding-block: var(--space-medium, 0.75rem);
 }

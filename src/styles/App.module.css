@@ -1,9 +1,14 @@
 .layout > * + * {
-  margin-block-start: 0.75rem;
+  --_vertical-rhythm: var(--space-medium, 0.75rem);
+  margin-block-start: var(--_vertical-rhythm);
 }
 
 .layout .controls {
-  margin-block-start: 1.75rem;
+  --_vertical-rhythm: var(--space-major);
+}
+
+.layout .laps {
+  --_vertical-rhythm: var(--space-large);
 }
 
 .layout .preferences {
@@ -14,7 +19,7 @@
 .controls {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: var(--space-medium, 0.75rem);
 }
 
 .preferences {
@@ -33,10 +38,10 @@
 }
 
 .laps {
+  line-height: var(--leading, 1.5);
   max-block-size: 22rem;
   max-block-size: 14lh;
   overflow-y: auto;
-  line-height: 1.5;
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-color);
 }

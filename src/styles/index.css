@@ -1,5 +1,19 @@
-/* global */
+/* variables */
 :root {
+  --leading: 1.5;
+  --font-weight-normal: 400;
+  --font-weight-bold: 600;
+  --font-size-small: 0.85em;
+
+  --space-minor: 0.25rem;
+  --space-small: 0.5rem;
+  --space-medium: 0.75rem;
+  --space-large: 1rem;
+  --space-major: 2rem;
+}
+
+/* global */
+html {
   color-scheme: light;
   --color: hsl(0 0% 11%);
   --color-dim: hsl(0 0% 37%);
@@ -118,7 +132,7 @@ button[data-role="primary"] {
 
 /* view transition */
 #layout {
-  padding: 1rem 2rem;
+  padding: var(--space-medium) var(--space-major);
   max-inline-size: 65ch;
   margin-inline: auto;
   display: flex;
@@ -127,7 +141,7 @@ button[data-role="primary"] {
 }
 
 html[data-display="large"] #layout {
-  padding: 1rem;
+  padding: var(--space-medium);
   max-inline-size: 90ch;
   justify-content: center;
 }
