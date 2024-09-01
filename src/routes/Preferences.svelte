@@ -1,8 +1,23 @@
 <script lang="ts">
   import type { Display, Theme } from "$lib/types";
+  import { onMount } from "svelte";
 
   let largeDisplay = $state(false);
   let darkTheme = $state(false);
+
+  onMount(() => {
+    const display = document.documentElement.getAttribute(
+      "data-display"
+    ) as Display;
+    const theme = document.documentElement.getAttribute("data-theme") as Theme;
+
+    if (display === "large") {
+      largeDisplay = true;
+    }
+    if (theme === "dark") {
+      darkTheme = true;
+    }
+  });
 
   const updateDisplay = () => {
     const display: Display = largeDisplay ? "large" : "";
