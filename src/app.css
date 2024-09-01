@@ -1,0 +1,222 @@
+/* variables */
+:root {
+  --leading: 1.5;
+  --font-weight-normal: 400;
+  --font-weight-bold: 600;
+  --font-size-small: 0.85em;
+
+  --space-minor: 0.25rem;
+  --space-small: 0.5rem;
+  --space-medium: 0.75rem;
+  --space-large: 1rem;
+  --space-major: 2rem;
+}
+
+/* global */
+html {
+  color-scheme: light;
+  --color: hsl(0 0% 11%);
+  --color-dim: hsl(0 0% 37%);
+  --background: hsl(0 0% 96%);
+  --button-color: hsl(0 0% 11%);
+  --button-background: hsl(0 0% 100%);
+  --button-color-hover: var(--button-color);
+  --button-background-hover: hsl(0 0% 88%);
+  --button-color-active: var(--button-color);
+  --button-background-active: hsl(0 0% 92%);
+  --button-color-disabled: hsl(0 0% 62%);
+  --button-background-disabled: var(--background);
+  --button-outline-color: var(--button-color);
+  --button-color-primary: hsl(0 0% 100%);
+  --button-background-primary: hsl(182 95% 24%);
+  --button-color-hover-primary: var(--button-color-primary);
+  --button-background-hover-primary: hsl(182 66% 31%);
+  --button-color-active-primary: hsl(182 30% 82%);
+  --button-background-active-primary: hsl(182 47% 38%);
+  --button-outline-color-primary: var(--button-background-primary);
+  --scrollbar-color: hsl(0 0% 54%) transparent;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color: hsl(0 0% 100%);
+  --color-dim: hsl(0 0% 81%);
+  --background: hsl(0, 0%, 15%);
+  --button-color: hsl(0 0% 100%);
+  --button-background: hsl(0 0% 20%);
+  --button-color-hover: var(--button-color);
+  --button-background-hover: hsl(0 0% 24%);
+  --button-color-active: var(--button-color);
+  --button-background-active: hsl(0 0% 18%);
+  --button-color-disabled: hsl(0 0% 48%);
+  --button-background-disabled: hsl(0 0% 19%);
+  --button-outline-color: var(--button-color);
+  --button-color-primary: hsl(0 0% 0%);
+  --button-background-primary: hsl(181 96% 55%);
+  --button-color-hover-primary: var(--button-color-primary);
+  --button-background-hover-primary: hsl(181 79% 51%);
+  --button-color-active-primary: hsl(181 72% 24%);
+  --button-background-active-primary: hsl(181 72% 47%);
+  --button-outline-color-primary: var(--button-background-primary);
+  --scrollbar-color: hsl(0 0% 62%) transparent;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--color);
+  background: var(--background);
+  margin: 0;
+  min-block-size: 100svb;
+}
+
+button {
+  color: var(--button-color, currentColor);
+  background: var(--button-background, initial);
+  border: none;
+  width: var(--button-size, 2rem);
+  height: var(--button-size, 2rem);
+  border-radius: var(--button-border-radius, 0);
+  padding: var(--button-padding, 0.5rem);
+  box-shadow: var(--button-box-shadow, none);
+}
+
+button:hover {
+  color: var(--button-color-hover);
+  background: var(--button-background-hover);
+}
+
+button:active {
+  color: var(--button-color-active);
+  background: var(--button-background-active);
+}
+
+button[disabled] {
+  color: var(--button-color-disabled);
+  background: var(--button-background-disabled);
+}
+
+button:focus-visible {
+  outline: var(--button-outline-color) solid 2px;
+  outline-offset: 2px;
+}
+
+button > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+button[data-role="primary"] {
+  --button-color: var(--button-color-primary);
+  --button-background: var(--button-background-primary);
+  --button-color-hover: var(--button-color-hover-primary);
+  --button-background-hover: var(--button-background-hover-primary);
+  --button-color-active: var(--button-color-active-primary);
+  --button-background-active: var(--button-background-active-primary);
+  --button-outline-color: var(--button-outline-color-primary);
+}
+
+/* utils */
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+/* view transition */
+#layout {
+  padding: var(--space-medium) var(--space-major);
+  max-inline-size: 65ch;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100svb;
+}
+
+html[data-display="large"] #layout {
+  padding: var(--space-medium);
+  max-inline-size: 90ch;
+  justify-content: center;
+}
+
+html[data-display="large"] :is(#toggle-dark-theme, #set-lap, #laps) {
+  display: none;
+}
+
+html {
+  view-transition-name: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    --transition-duration: 0.3s;
+  }
+
+  #display {
+    view-transition-name: display;
+  }
+
+  #toggle-large-display {
+    view-transition-name: toggle-large-display;
+  }
+
+  #toggle-dark-theme {
+    view-transition-name: toggle-dark-theme;
+  }
+
+  #toggle-start {
+    view-transition-name: toggle-start;
+  }
+
+  #set-lap {
+    view-transition-name: set-lap;
+  }
+
+  #reset {
+    view-transition-name: reset;
+  }
+
+  #laps {
+    view-transition-name: laps;
+  }
+
+  ::view-transition-group(*) {
+    animation-duration: var(--transition-duration, 0.25s);
+  }
+
+  ::view-transition-old(toggle-dark-theme),
+  ::view-transition-old(set-lap),
+  ::view-transition-old(laps) {
+    display: none;
+  }
+
+  ::view-transition-new(toggle-dark-theme),
+  ::view-transition-new(set-lap),
+  ::view-transition-new(laps) {
+    animation-delay: var(--transition-duration, 0.25s);
+  }
+}
+
+/* aria-pressed toggle */
+button[aria-pressed="false"] [data-pressed="false"] {
+  display: initial;
+}
+
+button[aria-pressed="false"] [data-pressed="true"] {
+  display: none;
+}
+
+button[aria-pressed="true"] [data-pressed="false"] {
+  display: none;
+}
+
+button[aria-pressed="true"] [data-pressed="true"] {
+  display: initial;
+}

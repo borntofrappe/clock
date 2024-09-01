@@ -1,4 +1,6 @@
 <script lang="ts">
+  import "../app.css";
+
   import { onDestroy } from "svelte";
   import { getTimeComponents } from "$lib/utils";
   import type { Lap, Addendum } from "$lib/types";
@@ -157,3 +159,52 @@
     <Laps {laps} />
   </div>
 </div>
+
+<style>
+  #layout > * + * {
+    --_vertical-rhythm: var(--space-medium, 0.75rem);
+    margin-block-start: var(--_vertical-rhythm);
+  }
+
+  #layout #controls {
+    --_vertical-rhythm: var(--space-major);
+  }
+
+  #layout #laps {
+    --_vertical-rhythm: var(--space-large);
+  }
+
+  #layout #preferences {
+    inline-size: max-content;
+    margin-inline-start: auto;
+  }
+
+  #controls {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-medium, 0.75rem);
+  }
+
+  #preferences {
+    --button-size: 2.2rem;
+    --button-padding: 0.6rem;
+    --button-border-radius: 0.5rem;
+    --button-background: none;
+  }
+
+  #controls {
+    --button-size: 3rem;
+    --button-padding: 1rem;
+    --button-border-radius: 1e5px;
+    --button-box-shadow: 0 0 0.1rem -0.05rem currentColor;
+  }
+
+  #laps {
+    line-height: var(--leading, 1.5);
+    max-block-size: 22rem;
+    max-block-size: 14lh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-color);
+  }
+</style>

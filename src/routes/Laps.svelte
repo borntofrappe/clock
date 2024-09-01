@@ -32,3 +32,31 @@
     {/each}
   </tbody>
 </table>
+
+<style>
+  table {
+    font-size: var(--font-size-small, 0.9em);
+    table-layout: fixed;
+    inline-size: 100%;
+    border-collapse: collapse;
+  }
+
+  table:has(tbody:empty) {
+    display: none;
+  }
+
+  table th {
+    text-align: start;
+    font-weight: var(--font-weight-bold, 600);
+    border-block-end: 1px solid var(--color-dim, currentColor);
+    border-block-end-color: color(from var(--color-dim) srgb r g b / 0.3);
+  }
+
+  table td {
+    font-feature-settings: "tnum";
+  }
+
+  table :is(th, td) {
+    padding-block: var(--space-medium, 0.75rem);
+  }
+</style>
