@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Stopwatch</title>
-    <meta name="description" content="Mark what's hip, what's happening up to the centisecond." />
+    <meta
+      name="description"
+      content="Mark what's hip, what's happening up to the centisecond."
+    />
     <meta
       name="theme-color"
       media="(prefers-color-scheme: light)"
@@ -46,8 +49,9 @@
     </style>
 
     <script>
-      const display = localStorage.getItem("data-display");
+      const display = localStorage.getItem("data-display") || "";
       let theme = localStorage.getItem("data-theme");
+
       if (theme === null) {
         theme = matchMedia("(prefers-color-scheme: dark)").matches
           ? "dark"
@@ -58,9 +62,9 @@
       document.documentElement.setAttribute("data-display", display);
       document.documentElement.setAttribute("data-theme", theme);
     </script>
+    %sveltekit.head%
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/index.tsx"></script>
+    <div style="display: contents">%sveltekit.body%</div>
   </body>
 </html>

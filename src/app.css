@@ -83,7 +83,7 @@ button {
   box-shadow: var(--button-box-shadow, none);
 }
 
-button:hover:not(:focus) {
+button:hover {
   color: var(--button-color-hover);
   background: var(--button-background-hover);
 }

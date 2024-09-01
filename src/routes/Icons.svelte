@@ -1,6 +1,5 @@
-function Icons() {
-  // prettier-ignore
-  return <svg display="none">
+<!-- prettier-ignore -->
+<svg display="none">
   <defs>
     <symbol id="icon-expand" viewBox="-10 -10 20 20">
       <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M 9.5 -9.5 3 -9.5 9 -9 9.5 -3 Z M 9.5 -9.5 -9.5 9.5 M -9.5 9.5 -3 9.5 -9 9 -9.5 3 Z" />
@@ -32,6 +31,3 @@ function Icons() {
     </symbol>
   </defs>
 </svg>
-}
-
-export default Icons;

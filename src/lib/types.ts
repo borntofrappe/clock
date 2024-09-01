@@ -2,7 +2,7 @@ export type Time = {
   hours: number;
   minutes: number;
   seconds: number;
-  hundredths: number;
+  centiseconds: number;
 };
 
 export type Addendum = "Fastest" | "Slowest";
@@ -13,3 +13,7 @@ export type Lap = {
   msCurrent: number;
   msTotal: number;
 };
+
+export type Theme = "light" | "dark";
+
+export type Display = "large" | "";
