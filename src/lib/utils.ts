@@ -12,7 +12,7 @@ export const getTimeComponents = (ms: number): Time => {
   hours = Math.floor(hours / 60);
 
   return {
-    hours: 0,
+    hours,
     minutes,
     seconds,
     centiseconds,
